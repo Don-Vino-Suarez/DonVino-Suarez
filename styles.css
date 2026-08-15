@@ -308,14 +308,24 @@
   .filo-card .icon-wrap svg{ width:26px; height:26px;}
   .filo-card h3{ color:var(--gold-light); font-size:22px; margin-bottom:12px;}
   .filo-card p{ font-size:16.5px; color:#e2d4bf; margin:0;}
+  .valores-list{ list-style:none; margin:0; padding:0; text-align:left; display:flex; flex-direction:column; gap:12px;}
+  .valores-list li{ font-size:16px; color:#e2d4bf; line-height:1.5;}
+  .valores-list b{ color:var(--gold-light); font-family:'Jost', sans-serif; font-weight:600; letter-spacing:0.03em;}
 
   /* FUNDADOR */
   .fundador-grid{ display:grid; grid-template-columns:0.8fr 1.2fr; gap:60px; align-items:center;}
   .fundador-frame{
     aspect-ratio:4/5; border-radius:4px; overflow:hidden;
-    background:linear-gradient(160deg, var(--burgundy-light), var(--burgundy) 60%, #2c0913);
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 42%, rgba(124,28,55,0.55), transparent 70%),
+      linear-gradient(160deg, #1b1008, var(--ink) 60%, #170e0c);
     display:flex; align-items:center; justify-content:center; position:relative;
     border:1px solid rgba(201,162,75,0.3);
+    padding:26px;
+  }
+  .fundador-frame img{
+    width:100%; height:100%; object-fit:contain;
+    mix-blend-mode:screen;
   }
   .fundador-frame .hibiscus-svg{ width:70%; height:70%; opacity:0.9;}
   .fundador-frame .hibiscus-svg path{ stroke:var(--gold-light); animation:none; stroke-dashoffset:0;}
@@ -339,6 +349,17 @@
   .contact-list a{ text-decoration:none; color:#e2d4bf; }
   .contact-list a:hover{ color:var(--gold-light); }
   .contact-list .lbl{ display:block; font-size:11px; text-transform:uppercase; letter-spacing:0.14em; color:var(--gold); margin-bottom:4px;}
+  .social-row{ display:flex; gap:14px; margin-top:32px; }
+  .social-btn{
+    display:flex; align-items:center; justify-content:center;
+    width:48px; height:48px;
+    color:var(--cream); text-decoration:none;
+    border:1px solid rgba(244,234,214,0.22);
+    border-radius:50%;
+    transition:all .3s ease;
+  }
+  .social-btn svg{ width:20px; height:20px; flex-shrink:0; }
+  .social-btn:hover{ border-color:var(--gold); color:var(--gold-light); background:rgba(201,162,75,0.1); transform:translateY(-2px); }
 
   .form-card{ background:rgba(244,234,214,0.03); border:1px solid rgba(244,234,214,0.14); border-radius:4px; padding:34px;}
   .form-card label{ display:block; font-family:'Jost'; font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase; color:#b6a88f; margin-bottom:8px; margin-top:18px;}

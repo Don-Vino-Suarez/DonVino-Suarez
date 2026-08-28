@@ -34,6 +34,7 @@
     font-weight:700;
     letter-spacing:0.01em;
   }
+  .italic{ font-style:italic; }
   a{color:inherit;}
   img{max-width:100%; display:block;}
   .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}

@@ -1,0 +1,185 @@
+:root{
+  --ink:#130c0a;
+  --wood:#241410;
+  --gold:#c9a24b;
+  --gold-light:#ecd08f;
+  --gold-dim:#8a6b32;
+  --cream:#f4ead6;
+  --verde:#9fd8a8;
+  --rojo:#f0a0a0;
+}
+*{ box-sizing:border-box; }
+[hidden]{ display:none !important; }
+body{
+  margin:0;
+  min-height:100vh;
+  background:linear-gradient(180deg, var(--ink), var(--wood));
+  color:var(--cream);
+  font-family:'Cormorant Garamond', serif;
+  font-size:18px;
+  line-height:1.5;
+}
+button{ font-family:'Jost', sans-serif; cursor:pointer; }
+a{ color:inherit; }
+img{ max-width:100%; display:block; }
+
+.admin-top{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  flex-wrap:wrap;
+  padding:16px 24px;
+  border-bottom:1px solid rgba(201,162,75,0.2);
+  background:rgba(19,12,10,0.92);
+  position:sticky;
+  top:0;
+  z-index:5;
+}
+.admin-brand{
+  font-family:'Playfair Display', serif;
+  font-size:20px;
+  text-decoration:none;
+}
+.admin-brand .flor{ color:var(--gold); }
+.admin-titulo{
+  font-family:'Jost', sans-serif;
+  font-size:12px;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+.admin-user{
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-family:'Jost', sans-serif;
+  font-size:13px;
+  color:#cfc0a8;
+}
+
+.admin-main{ max-width:1100px; margin:0 auto; padding:32px 20px 60px; }
+
+.admin-card{
+  max-width:460px;
+  margin:60px auto;
+  padding:40px 32px;
+  background:rgba(244,234,214,0.04);
+  border:1px solid rgba(201,162,75,0.28);
+  border-radius:4px;
+}
+.admin-card.centro{ text-align:center; }
+.admin-card h1{
+  margin:0 0 12px;
+  font-family:'Playfair Display', serif;
+  font-style:italic;
+  font-size:28px;
+}
+.admin-card p{ margin:0 0 24px; color:#e2d4bf; }
+.msg{ min-height:1.4em; margin:18px 0 0 !important; font-family:'Jost', sans-serif; font-size:13px; color:var(--rojo) !important; }
+
+.btn-dorado{
+  background:linear-gradient(120deg, var(--gold-dim), var(--gold-light) 50%, var(--gold));
+  color:#1c1108;
+  border:0;
+  border-radius:2px;
+  padding:14px 28px;
+  font-size:13px;
+  font-weight:500;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+}
+.btn-dorado:hover{ filter:brightness(1.08); }
+.btn-linea{
+  background:transparent;
+  color:var(--cream);
+  border:1px solid rgba(244,234,214,0.3);
+  border-radius:2px;
+  padding:8px 14px;
+  font-size:12px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+}
+.btn-linea:hover{ border-color:var(--gold); color:var(--gold-light); }
+
+.tabs{ display:flex; gap:10px; margin-bottom:24px; flex-wrap:wrap; }
+.tabs button{
+  background:transparent;
+  color:#cfc0a8;
+  border:1px solid rgba(244,234,214,0.2);
+  border-radius:24px;
+  padding:10px 20px;
+  font-size:13px;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+}
+.tabs button[aria-selected="true"]{
+  background:rgba(201,162,75,0.16);
+  border-color:var(--gold);
+  color:var(--gold-light);
+}
+.cuenta{
+  display:inline-block;
+  min-width:22px;
+  margin-left:6px;
+  padding:1px 7px;
+  border-radius:12px;
+  background:rgba(244,234,214,0.12);
+  font-size:12px;
+  text-align:center;
+}
+.vacio{
+  padding:60px 20px;
+  text-align:center;
+  border:1px dashed rgba(201,162,75,0.3);
+  border-radius:4px;
+  font-family:'Playfair Display', serif;
+  font-style:italic;
+  color:#cfc0a8;
+  margin:0;
+}
+.vacio:empty{ display:none; }
+
+.admin-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
+  gap:20px;
+}
+.admin-foto{
+  display:flex;
+  flex-direction:column;
+  background:rgba(244,234,214,0.04);
+  border:1px solid rgba(244,234,214,0.14);
+  border-radius:4px;
+  overflow:hidden;
+}
+.admin-foto a.thumb{ display:block; background:#0d0808; }
+.admin-foto img{ width:100%; aspect-ratio:4/3; object-fit:cover; }
+.admin-foto .info{ padding:14px 16px 6px; flex:1; }
+.admin-foto .quien{ font-family:'Jost', sans-serif; font-size:14px; font-weight:500; color:var(--gold-light); }
+.admin-foto .meta{ font-family:'Jost', sans-serif; font-size:12px; color:#9a8d77; margin-top:2px; }
+.admin-foto .texto{ margin:8px 0 0; font-size:16px; color:#e2d4bf; overflow-wrap:anywhere; }
+.admin-foto .acciones{ display:flex; gap:8px; padding:12px 16px 16px; }
+.admin-foto .acciones button{
+  flex:1;
+  padding:10px 8px;
+  border-radius:2px;
+  font-size:12px;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  border:1px solid transparent;
+}
+.admin-foto .acciones button:disabled{ opacity:0.5; cursor:wait; }
+.btn-aprobar{ background:rgba(159,216,168,0.16); color:var(--verde); border-color:rgba(159,216,168,0.45) !important; }
+.btn-aprobar:hover:not(:disabled){ background:rgba(159,216,168,0.28); }
+.btn-ocultar{ background:transparent; color:var(--cream); border-color:rgba(244,234,214,0.3) !important; }
+.btn-ocultar:hover:not(:disabled){ border-color:var(--gold) !important; color:var(--gold-light); }
+.btn-eliminar{ background:rgba(240,160,160,0.1); color:var(--rojo); border-color:rgba(240,160,160,0.4) !important; }
+.btn-eliminar:hover:not(:disabled){ background:rgba(240,160,160,0.22); }
+
+.nota{ margin:32px 0 0; font-family:'Jost', sans-serif; font-size:12px; color:#8a7c65; max-width:640px; }
+
+@media (max-width:560px){
+  .admin-top{ padding:12px 16px; }
+  .admin-user{ margin-left:0; width:100%; justify-content:space-between; }
+}

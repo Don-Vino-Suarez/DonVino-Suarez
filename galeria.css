@@ -1,0 +1,210 @@
+/* ===== COMUNIDAD: formulario de fotos + galería ===== */
+.comunidad-grid{
+  display:grid;
+  grid-template-columns:0.8fr 1.2fr;
+  gap:50px;
+  align-items:start;
+}
+.foto-form-card{ position:sticky; top:96px; }
+.foto-form-card input[type="file"]{
+  padding:10px;
+  cursor:pointer;
+  font-family:'Jost', sans-serif;
+  font-size:13px;
+  color:#cfc0a8;
+}
+.foto-form-card input[type="file"]::file-selector-button{
+  font-family:'Jost', sans-serif;
+  font-size:11.5px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  background:rgba(201,162,75,0.14);
+  color:var(--gold-light);
+  border:1px solid rgba(201,162,75,0.4);
+  border-radius:2px;
+  padding:8px 14px;
+  margin-right:12px;
+  cursor:pointer;
+}
+.form-card label .opcional{
+  text-transform:none;
+  letter-spacing:0;
+  opacity:0.65;
+  font-size:12px;
+}
+.foto-preview{
+  margin-top:14px;
+  width:100%;
+  max-height:220px;
+  object-fit:cover;
+  border-radius:3px;
+  border:1px solid rgba(201,162,75,0.3);
+}
+.foto-preview[hidden]{ display:none; }
+
+/* Campo trampa anti-spam: invisible para personas */
+.hp{
+  position:absolute !important;
+  left:-9999px;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+
+.form-card label.consent{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  margin-top:22px;
+  text-transform:none;
+  letter-spacing:0;
+  font-family:'Cormorant Garamond', serif;
+  font-size:15.5px;
+  line-height:1.4;
+  color:#d6c8b0;
+  cursor:pointer;
+}
+.form-card label.consent input{
+  width:auto;
+  margin-top:4px;
+  flex-shrink:0;
+  accent-color:var(--gold);
+}
+
+.progreso{
+  height:4px;
+  margin-top:16px;
+  background:rgba(244,234,214,0.12);
+  border-radius:4px;
+  overflow:hidden;
+}
+.progreso[hidden]{ display:none; }
+.progreso span{
+  display:block;
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg, var(--gold-dim), var(--gold-light));
+  transition:width .2s ease;
+}
+.foto-estado{
+  min-height:1.4em;
+  margin:14px 0 0;
+  font-family:'Jost', sans-serif;
+  font-size:13px;
+  line-height:1.5;
+  color:#cfc0a8;
+}
+.foto-estado.ok{ color:#9fd8a8; }
+.foto-estado.error{ color:#f0a0a0; }
+.form-card button:disabled{ opacity:0.55; cursor:not-allowed; transform:none; }
+
+/* Galería */
+.galeria-grid{ column-count:2; column-gap:16px; }
+.galeria-grid:empty{ display:none; }
+.foto-card{
+  break-inside:avoid;
+  margin:0 0 16px;
+  background:rgba(244,234,214,0.04);
+  border:1px solid rgba(244,234,214,0.14);
+  border-radius:3px;
+  overflow:hidden;
+}
+.foto-btn{
+  display:block;
+  width:100%;
+  padding:0;
+  border:0;
+  background:none;
+  overflow:hidden;
+  cursor:zoom-in;
+}
+.foto-btn img{
+  width:100%;
+  height:auto;
+  transition:transform .5s ease;
+}
+.foto-btn:hover img, .foto-btn:focus-visible img{ transform:scale(1.04); }
+.foto-btn:focus-visible{ outline:2px solid var(--gold); outline-offset:-2px; }
+.foto-card figcaption{
+  padding:12px 14px 14px;
+  font-family:'Jost', sans-serif;
+  font-size:12.5px;
+  color:#b6a88f;
+}
+.foto-card figcaption strong{
+  color:var(--gold-light);
+  font-weight:500;
+  font-size:13.5px;
+}
+.foto-card figcaption p{
+  margin:6px 0 0;
+  font-family:'Cormorant Garamond', serif;
+  font-size:16px;
+  line-height:1.4;
+  color:#e2d4bf;
+}
+.galeria-vacia{
+  margin:0;
+  padding:60px 24px;
+  text-align:center;
+  border:1px dashed rgba(201,162,75,0.3);
+  border-radius:4px;
+  font-family:'Playfair Display', serif;
+  font-style:italic;
+  font-size:18px;
+  color:#cfc0a8;
+}
+.galeria-vacia[hidden]{ display:none; }
+.aviso-alcohol{
+  margin:54px auto 0;
+  max-width:640px;
+  text-align:center;
+  font-family:'Jost', sans-serif;
+  font-size:12px;
+  letter-spacing:0.06em;
+  color:#9a8d77;
+}
+
+/* Foto ampliada */
+.lightbox{
+  border:0;
+  padding:0;
+  background:transparent;
+  max-width:min(92vw, 900px);
+  max-height:94vh;
+  overflow:visible;
+  color:var(--cream);
+}
+.lightbox::backdrop{ background:rgba(8,4,3,0.88); backdrop-filter:blur(3px); }
+.lightbox img{
+  max-width:100%;
+  max-height:78vh;
+  margin:0 auto;
+  border-radius:3px;
+  box-shadow:0 30px 80px -20px rgba(0,0,0,0.8);
+}
+.lightbox p{
+  margin:14px 0 0;
+  text-align:center;
+  font-family:'Jost', sans-serif;
+  font-size:13px;
+  letter-spacing:0.05em;
+  color:#e2d4bf;
+}
+.lb-cerrar{
+  position:absolute;
+  top:-44px;
+  right:0;
+  width:36px;
+  height:36px;
+  background:none;
+  color:var(--cream);
+  font-size:20px;
+  letter-spacing:0;
+}
+.lb-cerrar:hover{ color:var(--gold-light); }
+
+@media (max-width: 900px){
+  .comunidad-grid{ grid-template-columns:1fr; gap:40px; }
+  .foto-form-card{ position:static; }
+}

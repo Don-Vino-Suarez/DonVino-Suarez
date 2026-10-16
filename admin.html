@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Panel de fotos — Don Suárez</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<header class="admin-top">
+  <a class="admin-brand" href="index.html"><span class="flor">✿</span> Don Suárez</a>
+  <span class="admin-titulo">Panel de fotos</span>
+  <div class="admin-user" id="adminUser" hidden>
+    <span id="adminEmail"></span>
+    <button type="button" id="btnSalir" class="btn-linea">Salir</button>
+  </div>
+</header>
+
+<main class="admin-main">
+
+  <!-- Entrar -->
+  <section id="vistaLogin" class="admin-card centro" hidden>
+    <h1>Panel de administración</h1>
+    <p>Entra con la cuenta de Google autorizada para aprobar las fotos que sube la comunidad.</p>
+    <button type="button" id="btnGoogle" class="btn-dorado">Entrar con Google</button>
+    <p id="loginMsg" class="msg" role="alert"></p>
+  </section>
+
+  <!-- Cuenta sin permiso -->
+  <section id="vistaNoAut" class="admin-card centro" hidden>
+    <h1>Sin acceso</h1>
+    <p>La cuenta <b id="noAutEmail"></b> no tiene permiso para usar este panel.</p>
+    <button type="button" id="btnOtra" class="btn-dorado">Entrar con otra cuenta</button>
+  </section>
+
+  <!-- Panel -->
+  <section id="vistaPanel" hidden>
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" id="tabPend" aria-selected="true">Pendientes <span class="cuenta" id="cntPend">0</span></button>
+      <button type="button" role="tab" id="tabAprob" aria-selected="false">Aprobadas <span class="cuenta" id="cntAprob">0</span></button>
+    </div>
+    <p id="panelMsg" class="vacio"></p>
+    <div id="lista" class="admin-grid"></div>
+    <p class="nota">Al eliminar una foto se quita de la lista y de la galería. El archivo original queda guardado en tu cuenta de Cloudinary; puedes borrarlo desde su Media Library si quieres liberar espacio.</p>
+  </section>
+
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

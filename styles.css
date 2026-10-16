@@ -248,7 +248,7 @@
     line-height:1.4; color:var(--gold-light); border-left:2px solid var(--gold); padding-left:28px;
   }
   .quote-block cite{ display:block; margin-top:20px; font-family:'Jost'; font-style:normal; font-size:12.5px; letter-spacing:0.14em; text-transform:uppercase; color:#c9bda8;}
-  .historia-text p{ margin:0 0 18px; font-size:19px; color:#e2d4bf;}
+  .historia-text p{ margin:0 0 18px; font-size:19px; color:#e2d4bf; }
   .historia-text p:last-child{ margin-bottom:0;}
 
   /* PRODUCTO */

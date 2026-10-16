@@ -1,0 +1,47 @@
+rules_version = '2';
+
+// REGLAS DE SEGURIDAD DE FIRESTORE — galería de la comunidad Don Suárez
+//
+// Antes de pegarlas en Firebase (Firestore Database → Reglas), reemplaza:
+//   1) wilbertsuarez816@gmail.com  → la(s) cuenta(s) de Google que aprueban fotos
+//   2) TU_CLOUD_NAME              → tu "cloud name" de Cloudinary
+//
+// Qué permiten:
+//   - Cualquier persona puede ENVIAR una foto, pero siempre como pendiente
+//     (aprobada: false) y con los campos y tamaños esperados.
+//   - Cualquier persona puede LEER solo las fotos ya aprobadas.
+//   - Solo el administrador puede ver las pendientes, aprobar, ocultar y eliminar.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function esAdmin() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.email in ['wilbertsuarez816@gmail.com'];
+    }
+
+    function textoValido(campo, maximo) {
+      return request.resource.data[campo] is string
+        && request.resource.data[campo].size() <= maximo;
+    }
+
+    match /fotos/{fotoId} {
+
+      allow read: if resource.data.aprobada == true || esAdmin();
+
+      allow create: if request.resource.data.keys().hasOnly(['nombre', 'ciudad', 'mensaje', 'url', 'aprobada', 'fecha'])
+        && request.resource.data.keys().hasAll(['nombre', 'url', 'aprobada', 'fecha'])
+        && request.resource.data.aprobada == false
+        && request.resource.data.fecha == request.time
+        && textoValido('nombre', 60)
+        && request.resource.data.nombre.size() > 0
+        && (!('ciudad' in request.resource.data) || textoValido('ciudad', 60))
+        && (!('mensaje' in request.resource.data) || textoValido('mensaje', 240))
+        && textoValido('url', 300)
+        && request.resource.data.url.matches('https://res\\.cloudinary\\.com/sajkpxmd/image/upload/.*');
+
+      allow update, delete: if esAdmin();
+    }
+  }
+}

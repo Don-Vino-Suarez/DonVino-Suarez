@@ -9,6 +9,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,900;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Parisienne&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="galeria.css">
+<link rel="stylesheet" href="tienda.css">
 </head>
 <body>
 
@@ -28,8 +30,10 @@
     <ul class="navlinks">
       <li><a href="#historia">Historia</a></li>
       <li><a href="#vino">El vino</a></li>
+      <li><a href="#tienda">Tienda</a></li>
       <li><a href="#filosofia">Filosofía</a></li>
       <li><a href="#fundador">Fundador</a></li>
+      <li><a href="#comunidad">Comunidad</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
     <a class="navcta" href="#contacto">Ordenar</a>
@@ -148,6 +152,63 @@
   </div>
 </section>
 
+<!-- TIENDA (SIMULACIÓN) -->
+<section class="section-wood" id="tienda">
+  <div class="wrap">
+    <div class="kicker">
+      <div class="eyebrow">Tienda</div>
+      <h2 class="italic">Lleva Don Suárez a tu mesa</h2>
+      <p>Así lucirá nuestra tienda en línea. Por ahora es una vista previa para conocer la experiencia de compra.</p>
+    </div>
+    <p class="demo-banner" role="note"><strong>Vista previa · Simulación.</strong> Es solo una demostración: no se realizan cobros ni pedidos reales.</p>
+    <div class="tienda-grid">
+      <div class="productos">
+        <article class="producto-card" data-id="sabor-tropical" data-nombre="Sabor Tropical" data-precio="150">
+          <div class="producto-img">
+            <picture>
+              <source srcset="assets/botella-tinto-tropical.webp" type="image/webp">
+              <img src="assets/botella-tinto-tropical.png" width="310" height="1200" loading="lazy" alt="Botella de Don Suárez Sabor Tropical, vino tinto de Flor de Jamaica, 750 ml">
+            </picture>
+          </div>
+          <h3>Sabor Tropical</h3>
+          <p class="producto-tipo">Vino tinto · Flor de Jamaica</p>
+          <p class="producto-detalle">750 ml · 12% Alc. Vol.<br>Producto 100% artesanal</p>
+          <div class="producto-precio"><span class="precio">$150.00</span><small>Precio por botella</small></div>
+          <button type="button" class="btn-agregar">Agregar al pedido</button>
+        </article>
+        <article class="producto-card" data-id="seco-esmeralda" data-nombre="Seco Esmeralda" data-precio="150">
+          <div class="producto-img">
+            <picture>
+              <source srcset="assets/botella-seco-esmeralda.webp" type="image/webp">
+              <img src="assets/botella-seco-esmeralda.png" width="313" height="1200" loading="lazy" alt="Botella de Don Suárez Seco Esmeralda, vino tinto de Flor de Jamaica, 750 ml">
+            </picture>
+          </div>
+          <h3>Seco Esmeralda</h3>
+          <p class="producto-tipo">Vino tinto · Flor de Jamaica</p>
+          <p class="producto-detalle">750 ml · 12% Alc. Vol.<br>Producto 100% artesanal</p>
+          <div class="producto-precio"><span class="precio">$150.00</span><small>Precio por botella</small></div>
+          <button type="button" class="btn-agregar">Agregar al pedido</button>
+        </article>
+      </div>
+      <aside class="carrito" aria-labelledby="carritoTitulo">
+        <h3 id="carritoTitulo">Tu pedido</h3>
+        <p class="carrito-vacio" id="carritoVacio">Aún no has agregado botellas.</p>
+        <ul class="carrito-lista" id="carritoLista"></ul>
+        <div class="carrito-totales">
+          <div><span>Subtotal</span><span id="carritoSubtotal">$0.00</span></div>
+          <div><span>Envío</span><span>Por definir</span></div>
+          <div class="total"><span>Total</span><span id="carritoTotal">$0.00</span></div>
+        </div>
+        <button type="button" class="btn-primary" id="carritoFinalizar" disabled>Finalizar pedido (demo)</button>
+        <button type="button" class="carrito-vaciar" id="carritoVaciar" hidden>Vaciar pedido</button>
+        <p class="carrito-estado" id="carritoEstado" role="status" aria-live="polite"></p>
+        <p class="carrito-nota">Simulación: al finalizar no se cobra nada ni se envía ni se guarda ningún dato.</p>
+      </aside>
+    </div>
+    <p class="tienda-aviso">Venta exclusiva a mayores de 18 años. Evita el exceso: tomar bebidas alcohólicas en exceso es dañino para la salud.</p>
+  </div>
+</section>
+
 <!-- FILOSOFIA -->
 <section class="section-burgundy" id="filosofia">
   <div class="wrap">
@@ -202,6 +263,62 @@
   </div>
 </section>
 
+<!-- COMUNIDAD -->
+<section class="section-wood" id="comunidad">
+  <div class="wrap">
+    <div class="kicker">
+      <div class="eyebrow">Comunidad Don Suárez</div>
+      <h2 class="italic">Comparte tu momento Suárez</h2>
+      <p>Sube una foto brindando con Don Suárez. Revisamos cada imagen antes de publicarla en la galería.</p>
+    </div>
+    <div class="comunidad-grid">
+      <div class="form-card foto-form-card">
+        <form id="fotoForm">
+          <label for="fotoNombre">Tu nombre</label>
+          <input id="fotoNombre" name="nombre" type="text" maxlength="60" required placeholder="Cómo quieres que aparezca">
+          <label for="fotoCiudad">Ciudad <span class="opcional">(opcional)</span></label>
+          <input id="fotoCiudad" name="ciudad" type="text" maxlength="60" placeholder="Campeche, Mérida...">
+          <label for="fotoMensaje">Mensaje <span class="opcional">(opcional)</span></label>
+          <textarea id="fotoMensaje" name="mensaje" rows="3" maxlength="240" placeholder="¿Con quién y en qué ocasión brindaste?"></textarea>
+          <label for="fotoArchivo">Tu foto</label>
+          <input id="fotoArchivo" name="foto" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" required>
+          <img id="fotoPreview" class="foto-preview" alt="Vista previa de tu foto" hidden>
+          <div class="hp" aria-hidden="true">
+            <label for="fotoWeb">No llenar este campo</label>
+            <input id="fotoWeb" name="web" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <label class="consent">
+            <input id="fotoConsent" type="checkbox" required>
+            <span>Tengo 18 años o más y autorizo que Vinos Don Suárez publique mi foto y mi nombre en este sitio.</span>
+          </label>
+          <button type="submit" id="fotoEnviar" class="btn-primary">Enviar foto</button>
+          <div class="progreso" id="fotoProgreso" hidden><span></span></div>
+          <p class="foto-estado" id="fotoEstado" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+      <div class="galeria-wrap">
+        <div id="galeriaGrid" class="galeria-grid"></div>
+        <p id="galeriaVacia" class="galeria-vacia">Cargando fotos…</p>
+      </div>
+    </div>
+    <p class="aviso-alcohol">Contenido para mayores de 18 años. Evita el exceso: tomar bebidas alcohólicas en exceso es dañino para la salud.</p>
+  </div>
+</section>
+
+<dialog id="lightbox" class="lightbox" aria-label="Foto ampliada">
+  <button type="button" class="lb-cerrar" id="lbCerrar" aria-label="Cerrar">✕</button>
+  <img id="lbImg" alt="">
+  <p id="lbCap"></p>
+</dialog>
+
+<dialog id="demoDialog" class="demo-dialog" aria-labelledby="demoTitulo">
+  <h3 id="demoTitulo">Pedido de demostración</h3>
+  <ul id="demoResumen" class="demo-resumen"></ul>
+  <p class="demo-total"><span>Total</span><strong id="demoTotal"></strong></p>
+  <p class="demo-nota"><strong>Esto es una simulación.</strong> No se realizó ningún cobro, no se envió ningún pedido y no se guardó ningún dato. Cuando los permisos estén listos, aquí se conectará el pago.</p>
+  <button type="button" class="btn-primary" id="demoCerrar">Entendido</button>
+</dialog>
+
 <!-- CONTACTO -->
 <footer id="contacto">
   <div class="wrap">
@@ -211,7 +328,7 @@
         <h2 class="italic">Hablemos de vino</h2>
         <p>¿Quieres realizar un pedido, distribuir Don Suárez o simplemente saber más? Escríbenos, con gusto te atendemos.</p>
         <ul class="contact-list">
-          <li><span class="lbl">Correo para pedidos</span><a href="mailto:ventas@vinosdonsuarez.com">ventas@vinosdonsuarez.com</a></li>
+          <li><span class="lbl">Correo para pedidos</span><a href="https://mail.google.com/mail/?view=cm&fs=1&to=vinosdonsuarez%40gmail.com" target="_blank" rel="noopener">vinosdonsuarez@gmail.com</a></li>
           <li><span class="lbl">Ubicación</span><span>Campeche, Campeche, México</span></li>
         </ul>
         <div class="social-row">
@@ -224,7 +341,7 @@
         </div>
       </div>
       <div class="form-card">
-        <form action="mailto:ventas@vinosdonsuarez.com" method="post" enctype="text/plain">
+        <form id="contactoForm" action="#" method="get">
           <label for="nombre">Nombre</label>
           <input id="nombre" name="nombre" type="text" required placeholder="Tu nombre">
           <label for="correo">Correo</label>
@@ -233,7 +350,7 @@
           <textarea id="mensaje" name="mensaje" rows="4" required placeholder="Cuéntanos qué necesitas..."></textarea>
           <button type="submit" class="btn-primary">Enviar mensaje</button>
         </form>
-        <p class="form-note">Al enviar, se abrirá tu aplicación de correo con el mensaje listo para mandar a ventas@vinosdonsuarez.com</p>
+        <p class="form-note">Al enviar, se abrirá Gmail con el mensaje listo para mandar a vinosdonsuarez@gmail.com</p>
       </div>
     </div>
     <div class="foot-bottom">
@@ -245,6 +362,14 @@
 </footer>
 
 <script src="script.js"></script>
+<script defer src="tienda.js"></script>
+<script defer src="contacto.js"></script>
+
+<!-- Galería de la comunidad (Firebase + Cloudinary) -->
+<script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script defer src="firebase-config.js"></script>
+<script defer src="galeria.js"></script>
 
 </body>
 </html>

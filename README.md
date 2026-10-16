@@ -1,39 +1,54 @@
 # Vinos Don Suárez — Sitio Web
 
-Página web de una sola vista para **Vinos Don Suárez**, vino tinto artesanal elaborado a base de Flor de Jamaica en Campeche, México.
+Página web de **Vinos Don Suárez**, vino tinto artesanal elaborado a base de Flor de Jamaica en Campeche, México.
+
+## Qué incluye
+
+- **Página principal** con la historia, el producto, la tienda y el contacto.
+- **Tienda (demostración):** carrito de ejemplo. Todavía no hay pagos ni pedidos reales.
+- **Galería de la comunidad:** los visitantes envían fotos y se publican cuando se aprueban.
+- **Panel de administración** (`admin.html`): solo entra la cuenta de Google autorizada, para aprobar, ocultar o eliminar fotos.
+- **Contacto:** el formulario abre Gmail con el mensaje ya redactado.
 
 ## Estructura del proyecto
 
 ```
-don-suarez-site/
-├── index.html      → Estructura y contenido de la página
-├── styles.css       → Todos los estilos (colores, tipografía, layout)
-├── script.js        → Interactividad (menú móvil, animaciones al hacer scroll)
-├── assets/
-│   └── botella-don-suarez.jpg
-└── README.md
+├── index.html            Página principal
+├── admin.html            Panel privado para aprobar fotos
+├── css/
+│   ├── styles.css        Estilos generales
+│   ├── galeria.css       Galería y formulario de fotos
+│   ├── tienda.css        Tienda de demostración
+│   └── admin.css         Panel de administración
+├── js/
+│   ├── script.js         Menú móvil y animaciones
+│   ├── tienda.js         Carrito de la tienda (demo)
+│   ├── contacto.js       Formulario de contacto (abre Gmail)
+│   ├── galeria.js        Galería pública y envío de fotos
+│   ├── admin.js          Lógica del panel de administración
+│   └── firebase-config.js  Datos de Firebase y Cloudinary
+├── assets/               Imágenes
+└── firebase/
+    ├── firestore.rules   Reglas de seguridad de la base de datos
+    └── SETUP-FIREBASE.md Guía de configuración de Firebase y Cloudinary
 ```
 
 ## Cómo verla en tu computadora
 
-No necesitas instalar nada. Solo abre el archivo `index.html` con doble clic y se abrirá en tu navegador.
+Hay que abrirla desde un servidor local (no con doble clic), porque el inicio de sesión de Google no funciona en `file://`:
 
-## Cómo publicarla gratis con GitHub Pages
+```
+python -m http.server 8000
+```
 
-1. Sube esta carpeta completa a un repositorio en GitHub (puede llamarse, por ejemplo, `don-suarez-site`).
-2. En el repositorio, ve a **Settings → Pages**.
-3. En "Branch", selecciona `main` (o `master`) y la carpeta `/ (root)`. Guarda.
-4. Espera un par de minutos y GitHub te dará un enlace parecido a:
-   `https://tu-usuario.github.io/don-suarez-site/`
+Luego entra a `http://localhost:8000`.
 
-Con eso ya tendrás la página en línea, gratis y sin necesidad de un hosting aparte.
+## Tecnologías
 
-## Editar contenido
+HTML, CSS y JavaScript sin frameworks. Firebase (Firestore y Authentication) en plan gratuito y Cloudinary (plan gratuito) para las fotos.
 
-- **Textos e imágenes:** edita directamente `index.html`.
-- **Colores y tipografía:** todo está centralizado al inicio de `styles.css`, en la sección `:root { ... }` — cambia esos valores y se actualiza todo el sitio.
-- **Correo de contacto:** búscalo en `index.html` (aparece como `ventas@vinosdonsuarez.com`) y reemplázalo si cambia.
+## Pendiente
 
-## Créditos
-
-Contenido basado en el brochure y ficha técnica oficiales de Vinos Don Suárez (fundada en 2017, Campeche, México).
+- Precios y datos reales de la tienda.
+- Pagos (por ejemplo, Stripe) cuando estén listos los permisos.
+- Hosting y dominio.

@@ -1,11 +1,9 @@
 /*
-  Tienda (SIMULACIÓN) — Vinos Don Suárez
-  - Todo ocurre en la página: no hay pagos, no se envía ni se guarda ningún dato,
-    no usa Firebase ni Cloudinary (no genera peticiones ni costos).
+  Tienda — Vinos Don Suárez
+  - El carrito vive en la página; al finalizar se abre WhatsApp (+52 1 981 141 0557)
+    con el pedido redactado. No hay pagos ni se guarda ningún dato.
   - Los precios están en index.html (atributo data-precio de cada tarjeta).
     SON PRECIOS DE EJEMPLO: hay que cambiarlos por los reales.
-  - Cuando existan los permisos, el botón "Finalizar pedido" es el punto donde
-    se conectaría el pago (por ejemplo, Stripe).
 */
 (function () {
   'use strict';
@@ -20,9 +18,6 @@
   var btnFinalizar = document.getElementById('carritoFinalizar');
   var btnVaciar = document.getElementById('carritoVaciar');
   var estado = document.getElementById('carritoEstado');
-  var dialogo = document.getElementById('demoDialog');
-  var dResumen = document.getElementById('demoResumen');
-  var dTotal = document.getElementById('demoTotal');
 
   var MAX_POR_PRODUCTO = 12;
   var dinero = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' });
@@ -161,32 +156,19 @@
     btnVaciar.hidden = !hay;
   }
 
-  // ---------- Finalizar (solo demostración) ----------
+  // ---------- Finalizar: abre WhatsApp con el pedido ----------
+  var WHATSAPP = '5219811410557';
   btnFinalizar.addEventListener('click', function () {
-    dResumen.textContent = '';
+    var lineas = ['Hola, quiero hacer el siguiente pedido de Vinos Don Suárez:'];
     orden.forEach(function (id) {
       var cantidad = carrito[id];
       if (!cantidad) return;
-      var li = document.createElement('li');
-      var izq = document.createElement('span');
-      izq.textContent = cantidad + ' × ' + productos[id].nombre;
-      var der = document.createElement('span');
-      der.textContent = dinero.format(cantidad * productos[id].precio);
-      li.appendChild(izq);
-      li.appendChild(der);
-      dResumen.appendChild(li);
+      lineas.push('• ' + cantidad + ' × ' + productos[id].nombre + ' — ' + dinero.format(cantidad * productos[id].precio));
     });
-    dTotal.textContent = dinero.format(total());
-    if (typeof dialogo.showModal === 'function') dialogo.showModal();
-    else dialogo.setAttribute('open', '');
+    lineas.push('Total: ' + dinero.format(total()));
+    var url = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(lineas.join('\n'));
+    window.open(url, '_blank', 'noopener');
   });
-
-  function cerrarDialogo() {
-    if (typeof dialogo.close === 'function') dialogo.close();
-    else dialogo.removeAttribute('open');
-  }
-  document.getElementById('demoCerrar').addEventListener('click', cerrarDialogo);
-  dialogo.addEventListener('click', function (e) { if (e.target === dialogo) cerrarDialogo(); });
   btnVaciar.addEventListener('click', vaciar);
 
   pintar();

@@ -8,6 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,900;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Parisienne&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/galeria.css">
 <link rel="stylesheet" href="css/tienda.css">
@@ -26,7 +28,7 @@
 
 <header id="siteHeader">
   <nav class="wrap">
-    <a href="#inicio" class="brand"><span class="flor">✿</span> Don Suárez</a>
+    <a href="#inicio" class="brand"><img class="brand-logo" src="assets/logo-nav.png" width="48" height="48" alt="Logo de Vinos Don Suárez"> Don Suárez</a>
     <ul class="navlinks">
       <li><a href="#historia">Historia</a></li>
       <li><a href="#vino">El vino</a></li>
@@ -35,8 +37,10 @@
       <li><a href="#fundador">Fundador</a></li>
       <li><a href="#comunidad">Comunidad</a></li>
       <li><a href="#contacto">Contacto</a></li>
+      <li class="menu-social"><a href="https://www.facebook.com/VinoDonSuarez/" target="_blank" rel="noopener">Facebook</a></li>
     </ul>
-    <a class="navcta" href="#contacto">Ordenar</a>
+    <a class="nav-social" href="https://www.facebook.com/VinoDonSuarez/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 8.5h-2c-.8 0-1.5.7-1.5 1.5v2h3.3l-.4 3H11.5v7h-3v-7H6.5v-3h2V9.6C8.5 7.1 10 5.5 12.3 5.5H15v3z"/></svg></a>
+    <a class="navcta" href="#tienda">Ordenar</a>
     <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">☰</button>
   </nav>
 </header>
@@ -152,15 +156,14 @@
   </div>
 </section>
 
-<!-- TIENDA (SIMULACIÓN) -->
+<!-- TIENDA (pedidos por WhatsApp) -->
 <section class="section-wood" id="tienda">
   <div class="wrap">
     <div class="kicker">
       <div class="eyebrow">Tienda</div>
       <h2 class="italic">Lleva Don Suárez a tu mesa</h2>
-      <p>Así lucirá nuestra tienda en línea. Por ahora es una vista previa para conocer la experiencia de compra.</p>
+      <p>Arma tu pedido y envíalo por WhatsApp. Te atendemos directamente en el chat.</p>
     </div>
-    <p class="demo-banner" role="note"><strong>Vista previa · Simulación.</strong> Es solo una demostración: no se realizan cobros ni pedidos reales.</p>
     <div class="tienda-grid">
       <div class="productos">
         <article class="producto-card" data-id="sabor-tropical" data-nombre="Sabor Tropical" data-precio="150">
@@ -196,13 +199,12 @@
         <ul class="carrito-lista" id="carritoLista"></ul>
         <div class="carrito-totales">
           <div><span>Subtotal</span><span id="carritoSubtotal">$0.00</span></div>
-          <div><span>Envío</span><span>Por definir</span></div>
           <div class="total"><span>Total</span><span id="carritoTotal">$0.00</span></div>
         </div>
-        <button type="button" class="btn-primary" id="carritoFinalizar" disabled>Finalizar pedido (demo)</button>
+        <button type="button" class="btn-primary" id="carritoFinalizar" disabled>Enviar pedido por WhatsApp</button>
         <button type="button" class="carrito-vaciar" id="carritoVaciar" hidden>Vaciar pedido</button>
         <p class="carrito-estado" id="carritoEstado" role="status" aria-live="polite"></p>
-        <p class="carrito-nota">Simulación: al finalizar no se cobra nada ni se envía ni se guarda ningún dato.</p>
+        <p class="carrito-nota">Se abrirá WhatsApp con tu pedido ya escrito para el +52 1 981 141 0557. No se cobra nada en esta página.</p>
       </aside>
     </div>
     <p class="tienda-aviso">Venta exclusiva a mayores de 18 años. Evita el exceso: tomar bebidas alcohólicas en exceso es dañino para la salud.</p>
@@ -311,14 +313,6 @@
   <p id="lbCap"></p>
 </dialog>
 
-<dialog id="demoDialog" class="demo-dialog" aria-labelledby="demoTitulo">
-  <h3 id="demoTitulo">Pedido de demostración</h3>
-  <ul id="demoResumen" class="demo-resumen"></ul>
-  <p class="demo-total"><span>Total</span><strong id="demoTotal"></strong></p>
-  <p class="demo-nota"><strong>Esto es una simulación.</strong> No se realizó ningún cobro, no se envió ningún pedido y no se guardó ningún dato. Cuando los permisos estén listos, aquí se conectará el pago.</p>
-  <button type="button" class="btn-primary" id="demoCerrar">Entendido</button>
-</dialog>
-
 <!-- CONTACTO -->
 <footer id="contacto">
   <div class="wrap">
@@ -328,15 +322,17 @@
         <h2 class="italic">Hablemos de vino</h2>
         <p>¿Quieres realizar un pedido, distribuir Don Suárez o simplemente saber más? Escríbenos, con gusto te atendemos.</p>
         <ul class="contact-list">
-          <li><span class="lbl">Correo para pedidos</span><a href="https://mail.google.com/mail/?view=cm&fs=1&to=vinosdonsuarez%40gmail.com" target="_blank" rel="noopener">vinosdonsuarez@gmail.com</a></li>
+          <li><span class="lbl">WhatsApp para pedidos</span><a href="https://wa.me/5219811410557" target="_blank" rel="noopener">+52 1 981 141 0557</a></li>
+          <li><span class="lbl">Correo</span><a href="https://mail.google.com/mail/?view=cm&fs=1&to=vinosdonsuarez%40gmail.com" target="_blank" rel="noopener">vinosdonsuarez@gmail.com</a></li>
           <li><span class="lbl">Ubicación</span><span>Campeche, Campeche, México</span></li>
         </ul>
+        <p class="social-title">Síguenos y escríbenos</p>
         <div class="social-row">
           <a href="https://www.facebook.com/VinoDonSuarez/" target="_blank" rel="noopener" aria-label="Facebook de Vinos Don Suárez" class="social-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 8.5h-2c-.8 0-1.5.7-1.5 1.5v2h3.3l-.4 3H11.5v7h-3v-7H6.5v-3h2V9.6C8.5 7.1 10 5.5 12.3 5.5H15v3z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 8.5h-2c-.8 0-1.5.7-1.5 1.5v2h3.3l-.4 3H11.5v7h-3v-7H6.5v-3h2V9.6C8.5 7.1 10 5.5 12.3 5.5H15v3z"/></svg><span>Facebook</span>
           </a>
           <a href="https://api.whatsapp.com/send?phone=%2B529811410557" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp" class="social-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l1.3-4A8 8 0 1112 20a8 8 0 01-4-1.1L4 20z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5.6 0 1-.6.8-1.1l-.5-1.2c-.1-.4-.6-.6-1-.4l-.7.3a4.2 4.2 0 01-2.2-2.2l.3-.7c.2-.4 0-.9-.4-1L9.6 8.7c-.5-.2-1.1.2-1.1.8z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l1.3-4A8 8 0 1112 20a8 8 0 01-4-1.1L4 20z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5.6 0 1-.6.8-1.1l-.5-1.2c-.1-.4-.6-.6-1-.4l-.7.3a4.2 4.2 0 01-2.2-2.2l.3-.7c.2-.4 0-.9-.4-1L9.6 8.7c-.5-.2-1.1.2-1.1.8z"/></svg><span>WhatsApp</span>
           </a>
         </div>
       </div>
@@ -354,12 +350,13 @@
       </div>
     </div>
     <div class="foot-bottom">
-      <span class="brand">✿ Don Suárez</span>
+      <span class="brand"><img class="brand-logo" src="assets/logo-nav.png" width="40" height="40" alt=""> Don Suárez</span>
       <span>Fundada en 2017 · Campeche, México</span>
       <span>© 2026 Vinos Don Suárez. Todos los derechos reservados.</span>
     </div>
   </div>
 </footer>
+
 
 <script src="js/script.js"></script>
 <script defer src="js/tienda.js"></script>

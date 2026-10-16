@@ -103,6 +103,8 @@
   }
   nav.wrap{ display:flex; align-items:center; justify-content:space-between; }
   .brand{ display:flex; align-items:center; gap:10px; font-family:'Playfair Display'; font-size:22px; letter-spacing:0.02em; text-decoration:none; color:var(--cream);}
+  .brand-logo{ width:48px; height:48px; object-fit:contain; }
+  .foot-bottom .brand-logo{ width:40px; height:40px; }
   .brand .flor{ color:var(--gold); font-size:20px; }
   .navlinks{ display:flex; gap:34px; list-style:none; margin:0; padding:0; font-family:'Jost', sans-serif; font-size:13px; letter-spacing:0.1em; text-transform:uppercase;}
   .navlinks a{ text-decoration:none; opacity:0.85; position:relative; padding-bottom:4px;}
@@ -391,4 +393,32 @@
     .beneficios-list{ grid-template-columns:1fr;}
     section{ padding:80px 0;}
     .fundador-frame{ max-width:280px; margin:0 auto; }
+  }
+
+  /* REDES */
+  .social-title{ font-family:'Jost'; font-size:11px; text-transform:uppercase; letter-spacing:0.14em; color:var(--gold); margin:32px 0 0 !important; }
+  .social-row{ flex-wrap:wrap; margin-top:14px; }
+  .social-btn{ width:auto; height:auto; padding:12px 22px; gap:10px; border-radius:40px; font-family:'Jost'; font-size:14px; letter-spacing:0.04em; border-color:rgba(201,162,75,0.5); }
+  .nav-social{ display:flex; color:var(--cream); margin-left:auto; margin-right:14px; }
+  .nav-social svg{ width:22px; height:22px; }
+  .nav-social:hover{ color:var(--gold-light); }
+  nav.wrap{ gap:28px; }
+  .brand{ white-space:nowrap; }
+
+  @media (max-width: 600px){
+    nav.wrap{ gap:10px; }
+    .brand{ font-size:18px; gap:8px; min-width:0; }
+    .brand-logo{ width:40px; height:40px; }
+    .nav-social{ margin-left:auto; margin-right:0; }
+    .navcta{ padding:9px 14px; font-size:11px; letter-spacing:0.08em; }
+    .menu-btn{ padding:0 4px; flex-shrink:0; }
+  }
+  .menu-social{ display:none; }
+  @media (max-width: 600px){
+    .nav-social{ display:none; }
+    .navcta{ margin-left:auto; }
+    .menu-social{ display:list-item; }
+  }
+  @media (max-width: 360px){
+    .brand{ font-size:16px; }
   }

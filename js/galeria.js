@@ -39,16 +39,27 @@
            valido(f.appId) && valido(c.cloudName) && valido(c.uploadPreset);
   }
 
-  function mostrarEstado(texto, tipo) {
-    estado.textContent = texto || '';
+  // Los mensajes se guardan como claves (js/i18n.js) para que cambien al cambiar de idioma
+  var I18N = window.DS_I18N;
+  function tr(clave, vars) { return I18N ? I18N.t(clave, vars) : clave; }
+
+  function mostrarEstado(clave, tipo) {
+    if (clave) estado.setAttribute('data-i18n', clave); else estado.removeAttribute('data-i18n');
+    estado.textContent = clave ? tr(clave) : '';
     estado.className = 'foto-estado' + (tipo ? ' ' + tipo : '');
+  }
+
+  function mostrarVacia(clave) {
+    vacia.setAttribute('data-i18n', clave);
+    vacia.textContent = tr(clave);
+    vacia.hidden = false;
   }
 
   // ---------- Modo "sin configurar": la página sigue funcionando ----------
   if (!configurado()) {
-    vacia.textContent = 'La galería de la comunidad estará disponible muy pronto.';
+    mostrarVacia('gal.pronto');
     boton.disabled = true;
-    mostrarEstado('El envío de fotos aún no está activo.', '');
+    mostrarEstado('gal.inactivo', '');
     return;
   }
 
@@ -81,11 +92,15 @@
     var btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'foto-btn';
-    btn.setAttribute('aria-label', 'Ver foto de ' + f.nombre);
+    btn.setAttribute('data-i18n-attr', 'aria-label:gal.verFoto');
+    btn.setAttribute('data-i18n-vars', JSON.stringify({ n: f.nombre }));
+    btn.setAttribute('aria-label', tr('gal.verFoto', { n: f.nombre }));
     var img = document.createElement('img');
     img.loading = 'lazy';
     img.src = miniatura(f.url, 700);
-    img.alt = 'Foto compartida por ' + f.nombre;
+    img.setAttribute('data-i18n-attr', 'alt:gal.fotoDe');
+    img.setAttribute('data-i18n-vars', JSON.stringify({ n: f.nombre }));
+    img.alt = tr('gal.fotoDe', { n: f.nombre });
     btn.appendChild(img);
     btn.addEventListener('click', function () { abrirFoto(f); });
     fig.appendChild(btn);
@@ -112,8 +127,7 @@
 
     grid.textContent = '';
     if (!fotos.length) {
-      vacia.textContent = 'Aún no hay fotos. ¡Sé el primero en compartir tu momento Suárez!';
-      vacia.hidden = false;
+      mostrarVacia('gal.vacia');
       return;
     }
     vacia.hidden = true;
@@ -129,15 +143,14 @@
     .get()
     .then(function (snap) { pintar(snap.docs); })
     .catch(function () {
-      vacia.textContent = 'No pudimos cargar la galería en este momento.';
-      vacia.hidden = false;
+      mostrarVacia('gal.error');
     });
 
   // ---------- Foto ampliada ----------
   function abrirFoto(f) {
     if (typeof lightbox.showModal !== 'function') { window.open(f.url, '_blank', 'noopener'); return; }
     lbImg.src = miniatura(f.url, 1400);
-    lbImg.alt = 'Foto compartida por ' + f.nombre;
+    lbImg.alt = tr('gal.fotoDe', { n: f.nombre });
     lbCap.textContent = f.nombre + (f.ciudad ? ' · ' + f.ciudad : '') + (f.mensaje ? ' — ' + f.mensaje : '');
     lightbox.showModal();
   }
@@ -212,34 +225,34 @@
 
     // Campo trampa: si un robot lo llenó, finge éxito y no envía nada
     if (document.getElementById('fotoWeb').value) {
-      mostrarEstado('¡Gracias! Tu foto fue recibida.', 'ok');
+      mostrarEstado('gal.gracias1', 'ok');
       form.reset();
       return;
     }
 
     var archivo = inputFoto.files[0];
-    if (!archivo) { mostrarEstado('Elige una foto para continuar.', 'error'); return; }
+    if (!archivo) { mostrarEstado('gal.elige', 'error'); return; }
     if (!/^image\//.test(archivo.type) && !/\.(heic|heif)$/i.test(archivo.name)) {
-      mostrarEstado('El archivo debe ser una imagen (JPG, PNG, WEBP o HEIC).', 'error');
+      mostrarEstado('gal.tipo', 'error');
       return;
     }
     if (Date.now() - ultimoEnvio() < ESPERA_MS) {
-      mostrarEstado('Espera un minuto antes de enviar otra foto.', 'error');
+      mostrarEstado('gal.espera', 'error');
       return;
     }
 
     boton.disabled = true;
     progreso.hidden = false;
     barra.style.width = '0%';
-    mostrarEstado('Preparando tu foto…', '');
+    mostrarEstado('gal.preparando', '');
 
     try {
       var blob = await reducir(archivo);
       if (blob.size > MAX_BYTES) {
-        mostrarEstado('La foto pesa demasiado. Elige una de menos de 10 MB.', 'error');
+        mostrarEstado('gal.pesa', 'error');
         return;
       }
-      mostrarEstado('Subiendo tu foto…', '');
+      mostrarEstado('gal.subiendo', '');
       var url = await subirACloudinary(blob, function (p) { barra.style.width = Math.round(p * 100) + '%'; });
 
       var registro = {
@@ -259,9 +272,9 @@
       form.reset();
       preview.removeAttribute('src');
       preview.hidden = true;
-      mostrarEstado('¡Gracias! Recibimos tu foto y se publicará en cuanto la revisemos.', 'ok');
+      mostrarEstado('gal.gracias2', 'ok');
     } catch (err) {
-      mostrarEstado('No pudimos enviar tu foto. Revisa tu conexión e inténtalo de nuevo.', 'error');
+      mostrarEstado('gal.fallo', 'error');
     } finally {
       boton.disabled = false;
       progreso.hidden = true;

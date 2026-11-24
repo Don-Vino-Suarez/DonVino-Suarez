@@ -1,0 +1,114 @@
+/* Idiomas: selector, ajustes para textos largos y árabe (derecha a izquierda) */
+
+/* ---------- Selector de idioma ---------- */
+.lang{ position:relative; flex-shrink:0; margin-left:auto; margin-right:14px; }
+.nav-social{ margin-left:0; }
+.lang-btn{
+  display:flex; align-items:center; gap:6px;
+  background:none; border:1px solid rgba(201,162,75,0.4); color:var(--cream);
+  font-family:'Jost', sans-serif; font-size:12px; letter-spacing:0.1em;
+  padding:8px 11px; border-radius:2px; cursor:pointer;
+}
+.lang-btn:hover, .lang-btn[aria-expanded="true"]{ border-color:var(--gold); color:var(--gold-light); }
+.lang-btn svg{ width:16px; height:16px; }
+.lang-menu{
+  position:absolute; top:calc(100% + 8px); inset-inline-end:0; z-index:200;
+  list-style:none; margin:0; padding:6px; min-width:150px;
+  background:#130c0a; border:1px solid rgba(201,162,75,0.35); border-radius:3px;
+  box-shadow:0 12px 32px rgba(0,0,0,0.5);
+}
+.lang-menu[hidden]{ display:none; }
+.lang-menu button{
+  display:block; width:100%; text-align:start; background:none; border:0;
+  color:var(--cream); font-family:'Jost', sans-serif; font-size:14px;
+  padding:10px 12px; cursor:pointer; border-radius:2px;
+}
+.lang-menu button:hover{ background:rgba(201,162,75,0.14); color:var(--gold-light); }
+.lang-menu button[aria-selected="true"]{ color:var(--gold-light); }
+.lang-menu button[aria-selected="true"]::after{ content:" ✓"; }
+
+/* ---------- Menú: más espacio para textos largos (francés, italiano) ---------- */
+@media (min-width:1101px){
+  .navlinks{ gap:22px; }
+}
+@media (max-width:1280px){
+  .navlinks{ gap:20px; font-size:12px; letter-spacing:0.06em; }
+}
+@media (max-width:1100px){
+  .navlinks{ display:none; }
+  .menu-btn{ display:block; }
+  .navlinks a{ padding-bottom:0; }
+}
+@media (max-width:600px){
+  nav.wrap{ gap:8px; }
+  .lang{ margin-right:0; }
+  .navcta{ margin-left:0; }
+  .lang-btn{ padding:8px 8px; gap:4px; letter-spacing:0.04em; }
+  .lang-btn svg{ width:14px; height:14px; }
+  .navcta{ padding:9px 10px; letter-spacing:0.04em; }
+  .brand{ font-size:16px; }
+}
+@media (max-width:400px){
+  .brand-logo{ width:34px; height:34px; }
+  .brand{ font-size:14px; gap:6px; }
+}
+
+/* ---------- Árabe: derecha a izquierda ---------- */
+html[lang="ar"] body,
+html[lang="ar"] button,
+html[lang="ar"] input,
+html[lang="ar"] textarea{
+  font-family:'Cairo','Segoe UI',Tahoma,'Noto Naskh Arabic',sans-serif !important;
+}
+html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3, html[lang="ar"] h4, html[lang="ar"] h5,
+html[lang="ar"] .quote-block, html[lang="ar"] .lede{
+  font-family:'Amiri','Cairo','Noto Naskh Arabic',serif !important;
+}
+html[lang="ar"] .brand, html[lang="ar"] .brand *{ font-family:'Playfair Display', serif !important; }
+html[lang="ar"] *{ letter-spacing:0 !important; text-transform:none !important; }
+html[lang="ar"] .italic, html[lang="ar"] em, html[lang="ar"] cite{ font-style:normal !important; }
+html[lang="ar"] body{ line-height:1.9; }
+html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3{ line-height:1.35; }
+
+html[dir="rtl"] .lang{ margin-left:14px; margin-right:auto; }
+html[dir="rtl"] .nav-social{ margin-left:14px; margin-right:0; }
+html[dir="rtl"] .hero-facts div{ border-left:0; padding-left:0; border-right:1px solid rgba(201,162,75,0.35); padding-right:16px; }
+html[dir="rtl"] .quote-block{ border-left:0; padding-left:0; border-right:2px solid var(--gold); padding-right:28px; }
+html[dir="rtl"] .spec-row .v{ text-align:left; }
+html[dir="rtl"] .valores-list{ text-align:right; }
+html[dir="rtl"] .hero .wrap{ text-align:right; }
+html[dir="rtl"] .foto-form-card input[type="file"]::file-selector-button{ margin-right:0; margin-left:12px; }
+html[dir="rtl"] .item-quitar{ margin-left:0; margin-right:auto; }
+html[dir="rtl"] .lb-cerrar{ right:auto; left:0; }
+@media (max-width:600px){
+  html[dir="rtl"] .lang{ margin-left:0; }
+  html[dir="rtl"] .navcta{ margin-left:0; margin-right:0; }
+}
+/* Teléfonos, correos y cifras siempre de izquierda a derecha */
+html[dir="rtl"] .contact-list a, html[dir="rtl"] .precio, html[dir="rtl"] .item-linea,
+html[dir="rtl"] #carritoSubtotal, html[dir="rtl"] #carritoTotal{ unicode-bidi:isolate; direction:ltr; }
+
+/* El campo oculto anti-robots usa left:-9999px; en derecha a izquierda eso ensancha la página */
+html[dir="rtl"] .hp{ left:auto !important; right:-9999px; }
+html[dir="rtl"] body{ overflow-x:hidden; }
+/* Valores de la ficha técnica (p. ej. "750 ml") sin cifras desordenadas en árabe */
+html[dir="rtl"] .spec-row .v{ unicode-bidi:plaintext; }
+.navlinks a{ white-space:nowrap; }
+.brand{ flex-shrink:0; }
+@media (min-width:1101px) and (max-width:1280px){
+  .navlinks{ gap:15px; letter-spacing:0.04em; }
+}
+@media (min-width:1281px){
+  .navlinks{ gap:12px; }
+}
+
+/* Francés, italiano y árabe: textos más largos -> más ancho para el menú y ☰ antes */
+html[lang="fr"] nav.wrap, html[lang="it"] nav.wrap, html[lang="ar"] nav.wrap{ max-width:1400px; }
+@media (max-width:1360px){
+  html[lang="fr"] .navlinks, html[lang="it"] .navlinks{ display:none; }
+  html[lang="fr"] .menu-btn, html[lang="it"] .menu-btn{ display:block; }
+}
+@media (max-width:1200px){
+  html[lang="ar"] .navlinks{ display:none; }
+  html[lang="ar"] .menu-btn{ display:block; }
+}

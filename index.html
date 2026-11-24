@@ -13,6 +13,8 @@
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/galeria.css">
 <link rel="stylesheet" href="css/tienda.css">
+<link rel="stylesheet" href="css/i18n.css">
+<script src="js/i18n.js"></script>
 </head>
 <body>
 
@@ -28,20 +30,33 @@
 
 <header id="siteHeader">
   <nav class="wrap">
-    <a href="#inicio" class="brand"><img class="brand-logo" src="assets/logo-nav.png" width="48" height="48" alt="Logo de Vinos Don Suárez"> Don Suárez</a>
+    <a href="#inicio" class="brand"><img class="brand-logo" src="assets/logo-nav.png" width="48" height="48" alt="Logo de Vinos Don Suárez" data-i18n-attr="alt:logo.alt"> Don Suárez</a>
     <ul class="navlinks">
-      <li><a href="#historia">Historia</a></li>
-      <li><a href="#vino">El vino</a></li>
-      <li><a href="#tienda">Tienda</a></li>
-      <li><a href="#filosofia">Filosofía</a></li>
-      <li><a href="#fundador">Fundador</a></li>
-      <li><a href="#comunidad">Comunidad</a></li>
-      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="#historia" data-i18n="nav.historia">Historia</a></li>
+      <li><a href="#vino" data-i18n="nav.vino">El vino</a></li>
+      <li><a href="#tienda" data-i18n="nav.tienda">Tienda</a></li>
+      <li><a href="#filosofia" data-i18n="nav.filosofia">Filosofía</a></li>
+      <li><a href="#fundador" data-i18n="nav.fundador">Fundador</a></li>
+      <li><a href="#comunidad" data-i18n="nav.comunidad">Comunidad</a></li>
+      <li><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
       <li class="menu-social"><a href="https://www.facebook.com/VinoDonSuarez/" target="_blank" rel="noopener">Facebook</a></li>
     </ul>
+    <div class="lang" id="langSwitch">
+      <button type="button" class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-controls="langMenu" data-i18n-attr="aria-label:lang.label" aria-label="Idioma">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>
+        <span id="langCode">ES</span>
+      </button>
+      <ul class="lang-menu" id="langMenu" role="listbox" hidden>
+        <li><button type="button" role="option" data-lang="es" lang="es">Español</button></li>
+        <li><button type="button" role="option" data-lang="en" lang="en">English</button></li>
+        <li><button type="button" role="option" data-lang="fr" lang="fr">Français</button></li>
+        <li><button type="button" role="option" data-lang="it" lang="it">Italiano</button></li>
+        <li><button type="button" role="option" data-lang="ar" lang="ar" dir="rtl">العربية</button></li>
+      </ul>
+    </div>
     <a class="nav-social" href="https://www.facebook.com/VinoDonSuarez/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 8.5h-2c-.8 0-1.5.7-1.5 1.5v2h3.3l-.4 3H11.5v7h-3v-7H6.5v-3h2V9.6C8.5 7.1 10 5.5 12.3 5.5H15v3z"/></svg></a>
-    <a class="navcta" href="#tienda">Ordenar</a>
-    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">☰</button>
+    <a class="navcta" href="#tienda" data-i18n="nav.ordenar">Ordenar</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" data-i18n-attr="aria-label:menu.aria">☰</button>
   </nav>
 </header>
 
@@ -49,17 +64,17 @@
 <section class="hero" id="inicio">
   <div class="wrap">
     <div class="hero-copy">
-      <div class="eyebrow">Vino tinto artesanal · Campeche, México</div>
-      <h1 class="italic">De la <span class="gold-text">flor</span><br>al éxito.</h1>
-      <p class="lede">Vino tinto elaborado 100% de forma artesanal a partir de la Flor de Jamaica, cultivada y cosechada en las tierras de la Casa Suárez, ubicada en la península de Yucatán.</p>
+      <div class="eyebrow" data-i18n="hero.eyebrow">Vino tinto artesanal · Campeche, México</div>
+      <h1 class="italic" data-i18n-html="hero.h1">De la <span class="gold-text">flor</span><br>al éxito.</h1>
+      <p class="lede" data-i18n="hero.lede">Vino tinto elaborado 100% de forma artesanal a partir de la Flor de Jamaica, cultivada y cosechada en las tierras de la Casa Suárez, ubicada en la península de Yucatán.</p>
       <div class="hero-ctas">
-        <a href="#vino" class="btn btn-primary">Conocer el vino</a>
-        <a href="#historia" class="btn btn-ghost">Nuestra historia</a>
+        <a href="#vino" class="btn btn-primary" data-i18n="hero.cta1">Conocer el vino</a>
+        <a href="#historia" class="btn btn-ghost" data-i18n="hero.cta2">Nuestra historia</a>
       </div>
       <div class="hero-facts">
-        <div><b>2017</b><span>Fundación</span></div>
-        <div><b>100%</b><span>Artesanal</span></div>
-        <div><b>750ml</b><span>Presentación</span></div>
+        <div><b>2017</b><span data-i18n="hero.fundacion">Fundación</span></div>
+        <div><b>100%</b><span data-i18n="hero.artesanal">Artesanal</span></div>
+        <div><b>750ml</b><span data-i18n="presentacion">Presentación</span></div>
       </div>
     </div>
     <div class="hero-visual">
@@ -75,29 +90,29 @@
       </div>
       <div class="bottle-glow"></div>
       <div class="bottle-frame">
-        <img src="assets/botella-don-suarez.jpg" alt="Botella de Vino Don Suárez, vino tinto de Flor de Jamaica, 750ml">
+        <img src="assets/botella-don-suarez.jpg" alt="Botella de Vino Don Suárez, vino tinto de Flor de Jamaica, 750ml" data-i18n-attr="alt:hero.bottle.alt">
       </div>
     </div>
   </div>
-  <div class="scroll-cue"><span>Descubre</span><span class="line"></span></div>
+  <div class="scroll-cue"><span data-i18n="hero.scroll">Descubre</span><span class="line"></span></div>
 </section>
 
 <!-- HISTORIA -->
 <section class="section-wood" id="historia">
   <div class="wrap">
     <div class="kicker">
-      <div class="eyebrow">Nuestra historia</div>
-      <h2 class="italic">Un día de experimentos entre hermanos</h2>
+      <div class="eyebrow" data-i18n="hero.cta2">Nuestra historia</div>
+      <h2 class="italic" data-i18n="historia.h2">Un día de experimentos entre hermanos</h2>
     </div>
     <div class="historia-grid">
       <div class="quote-block">
-        “La virtud está en nuestro ser; utilizarla con propósito es la clave de la felicidad.”
-        <cite>— Wilbert Suárez, CEO y Fundador</cite>
+        <span data-i18n="historia.quote">“La virtud está en nuestro ser; utilizarla con propósito es la clave de la felicidad.”</span>
+        <cite data-i18n="historia.cite">— Wilbert Suárez, CEO y Fundador</cite>
       </div>
       <div class="historia-text">
-        <p>En Vino Don Suárez creemos que cada copa cuenta una historia. Somos una empresa orgullosamente campechana y mexicana, dedicada a la elaboración de vino 100% artesanal desde 2017, hecho con la mejor Flor de Jamaica cultivada de forma natural.</p>
-        <p>Nuestro proceso combina tradición y pasión, transformando los sabores intensos y los aromas frescos de la jamaica en una experiencia única para los sentidos. Cada botella refleja el esmero de manos campechanas y el compromiso con la calidad, la autenticidad y el respeto por la tierra.</p>
-        <p>Don Suárez no es solo un vino: es el resultado de la innovación, el orgullo regional y el amor por lo artesanal. Brindamos por quienes disfrutan lo natural, lo nuestro y lo hecho con el corazón.</p>
+        <p data-i18n="historia.p1">En Vino Don Suárez creemos que cada copa cuenta una historia. Somos una empresa orgullosamente campechana y mexicana, dedicada a la elaboración de vino 100% artesanal desde 2017, hecho con la mejor Flor de Jamaica cultivada de forma natural.</p>
+        <p data-i18n="historia.p2">Nuestro proceso combina tradición y pasión, transformando los sabores intensos y los aromas frescos de la jamaica en una experiencia única para los sentidos. Cada botella refleja el esmero de manos campechanas y el compromiso con la calidad, la autenticidad y el respeto por la tierra.</p>
+        <p data-i18n="historia.p3">Don Suárez no es solo un vino: es el resultado de la innovación, el orgullo regional y el amor por lo artesanal. Brindamos por quienes disfrutan lo natural, lo nuestro y lo hecho con el corazón.</p>
       </div>
     </div>
   </div>
@@ -107,48 +122,48 @@
 <section class="section-dark" id="vino">
   <div class="wrap">
     <div class="kicker">
-      <div class="eyebrow">El producto</div>
-      <h2 class="italic">Vino tinto de Flor de Jamaica</h2>
-      <p>Un vino de intenso color rojo esmeralda, aromas tropicales suaves y un final delicado. Una experiencia única, nacida de la tierra campechana.</p>
+      <div class="eyebrow" data-i18n="vino.eyebrow">El producto</div>
+      <h2 class="italic" data-i18n="vino.h2">Vino tinto de Flor de Jamaica</h2>
+      <p data-i18n="vino.intro">Un vino de intenso color rojo esmeralda, aromas tropicales suaves y un final delicado. Una experiencia única, nacida de la tierra campechana.</p>
     </div>
     <div class="producto-grid">
       <div class="label-card">
-        <h3>Ficha técnica</h3>
-        <div class="spec-row"><span class="k">Nombre</span><span class="v">Ibiscus Sabdariffa</span></div>
-        <div class="spec-row"><span class="k">Tipo</span><span class="v">Vino tinto</span></div>
-        <div class="spec-row"><span class="k">Presentación</span><span class="v">750 ml</span></div>
-        <div class="spec-row"><span class="k">Grados de alcohol</span><span class="v">12% Alc. Vol.</span></div>
+        <h3 data-i18n="ficha.h3">Ficha técnica</h3>
+        <div class="spec-row"><span class="k" data-i18n="ficha.nombre">Nombre</span><span class="v">Ibiscus Sabdariffa</span></div>
+        <div class="spec-row"><span class="k" data-i18n="ficha.tipo">Tipo</span><span class="v" data-i18n="ficha.tipoV">Vino tinto</span></div>
+        <div class="spec-row"><span class="k" data-i18n="presentacion">Presentación</span><span class="v">750 ml</span></div>
+        <div class="spec-row"><span class="k" data-i18n="ficha.alcohol">Grados de alcohol</span><span class="v" data-i18n="ficha.alcoholV">12% Alc. Vol.</span></div>
         <div class="spec-row"><span class="k">pH</span><span class="v">3.5</span></div>
         <div class="spec-row"><span class="k">Brix</span><span class="v">14</span></div>
-        <div class="spec-row"><span class="k">Acidez</span><span class="v">0.45%</span></div>
+        <div class="spec-row"><span class="k" data-i18n="ficha.acidez">Acidez</span><span class="v">0.45%</span></div>
         <div class="tasting">
-          <h4>Notas de cata</h4>
+          <h4 data-i18n="ficha.cata">Notas de cata</h4>
           <div class="tasting-tags">
-            <span>Intenso color rojo esmeralda</span>
-            <span>Aroma tropical</span>
-            <span>Final suave</span>
-            <span>Sabor consistente</span>
+            <span data-i18n="ficha.tag1">Intenso color rojo esmeralda</span>
+            <span data-i18n="ficha.tag2">Aroma tropical</span>
+            <span data-i18n="ficha.tag3">Final suave</span>
+            <span data-i18n="ficha.tag4">Sabor consistente</span>
           </div>
         </div>
       </div>
       <div class="producto-intro">
-        <p>La Flor de Jamaica, gracias a su contenido de ácido hibiscus, vitaminas y minerales, es la protagonista de cada botella Don Suárez. Estas son algunas de las razones por las que la elegimos como base de nuestro vino artesanal:</p>
+        <p data-i18n="vino.p">La Flor de Jamaica, gracias a su contenido de ácido hibiscus, vitaminas y minerales, es la protagonista de cada botella Don Suárez. Estas son algunas de las razones por las que la elegimos como base de nuestro vino artesanal:</p>
         <div class="beneficios-list">
           <div class="beneficio">
             <svg viewBox="0 0 24 24" fill="none" stroke="#c9a24b" stroke-width="1.4"><path d="M12 3c-3 2-5 5-5 8a5 5 0 0010 0c0-3-2-6-5-8z"/></svg>
-            <div><h5>Sistema inmunológico</h5><p>Fortalece las defensas naturales del organismo.</p></div>
+            <div><h5 data-i18n="ben1.h">Sistema inmunológico</h5><p data-i18n="ben1.p">Fortalece las defensas naturales del organismo.</p></div>
           </div>
           <div class="beneficio">
             <svg viewBox="0 0 24 24" fill="none" stroke="#c9a24b" stroke-width="1.4"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg>
-            <div><h5>Hígado y riñones</h5><p>Contribuye a limpiar y purificar el organismo.</p></div>
+            <div><h5 data-i18n="ben2.h">Hígado y riñones</h5><p data-i18n="ben2.p">Contribuye a limpiar y purificar el organismo.</p></div>
           </div>
           <div class="beneficio">
             <svg viewBox="0 0 24 24" fill="none" stroke="#c9a24b" stroke-width="1.4"><path d="M4 12h16M4 12l4-4M4 12l4 4"/></svg>
-            <div><h5>Propiedades diuréticas</h5><p>Ayuda al equilibrio natural de líquidos.</p></div>
+            <div><h5 data-i18n="ben3.h">Propiedades diuréticas</h5><p data-i18n="ben3.p">Ayuda al equilibrio natural de líquidos.</p></div>
           </div>
           <div class="beneficio">
             <svg viewBox="0 0 24 24" fill="none" stroke="#c9a24b" stroke-width="1.4"><path d="M12 21s-7-4.35-9.5-9C1 8 3 4 7 4c2 0 4 1.5 5 3 1-1.5 3-3 5-3 4 0 6 4 4.5 8-2.5 4.65-9.5 9-9.5 9z"/></svg>
-            <div><h5>Bienestar general</h5><p>Un aliado natural para el descanso y la vitalidad.</p></div>
+            <div><h5 data-i18n="ben4.h">Bienestar general</h5><p data-i18n="ben4.p">Un aliado natural para el descanso y la vitalidad.</p></div>
           </div>
         </div>
       </div>
@@ -160,9 +175,9 @@
 <section class="section-wood" id="tienda">
   <div class="wrap">
     <div class="kicker">
-      <div class="eyebrow">Tienda</div>
-      <h2 class="italic">Lleva Don Suárez a tu mesa</h2>
-      <p>Arma tu pedido y envíalo por WhatsApp. Te atendemos directamente en el chat.</p>
+      <div class="eyebrow" data-i18n="nav.tienda">Tienda</div>
+      <h2 class="italic" data-i18n="tienda.h2">Lleva Don Suárez a tu mesa</h2>
+      <p data-i18n="tienda.p">Arma tu pedido y envíalo por WhatsApp. Te atendemos directamente en el chat.</p>
     </div>
     <div class="tienda-grid">
       <div class="productos">
@@ -170,44 +185,44 @@
           <div class="producto-img">
             <picture>
               <source srcset="assets/botella-tinto-tropical.webp" type="image/webp">
-              <img src="assets/botella-tinto-tropical.png" width="310" height="1200" loading="lazy" alt="Botella de Don Suárez Sabor Tropical, vino tinto de Flor de Jamaica, 750 ml">
+              <img src="assets/botella-tinto-tropical.png" width="310" height="1200" loading="lazy" alt="Botella de Don Suárez Sabor Tropical, vino tinto de Flor de Jamaica, 750 ml" data-i18n-attr="alt:prod1.alt">
             </picture>
           </div>
           <h3>Sabor Tropical</h3>
-          <p class="producto-tipo">Vino tinto · Flor de Jamaica</p>
-          <p class="producto-detalle">750 ml · 12% Alc. Vol.<br>Producto 100% artesanal</p>
-          <div class="producto-precio"><span class="precio">$150.00</span><small>Precio por botella</small></div>
-          <button type="button" class="btn-agregar">Agregar al pedido</button>
+          <p class="producto-tipo" data-i18n="prod.tipo">Vino tinto · Flor de Jamaica</p>
+          <p class="producto-detalle" data-i18n-html="prod.detalle">750 ml · 12% Alc. Vol.<br>Producto 100% artesanal</p>
+          <div class="producto-precio"><span class="precio">$150.00</span><small data-i18n="prod.porBotella">Precio por botella</small></div>
+          <button type="button" class="btn-agregar" data-i18n="prod.agregar">Agregar al pedido</button>
         </article>
         <article class="producto-card" data-id="seco-esmeralda" data-nombre="Seco Esmeralda" data-precio="150">
           <div class="producto-img">
             <picture>
               <source srcset="assets/botella-seco-esmeralda.webp" type="image/webp">
-              <img src="assets/botella-seco-esmeralda.png" width="313" height="1200" loading="lazy" alt="Botella de Don Suárez Seco Esmeralda, vino tinto de Flor de Jamaica, 750 ml">
+              <img src="assets/botella-seco-esmeralda.png" width="313" height="1200" loading="lazy" alt="Botella de Don Suárez Seco Esmeralda, vino tinto de Flor de Jamaica, 750 ml" data-i18n-attr="alt:prod2.alt">
             </picture>
           </div>
           <h3>Seco Esmeralda</h3>
-          <p class="producto-tipo">Vino tinto · Flor de Jamaica</p>
-          <p class="producto-detalle">750 ml · 12% Alc. Vol.<br>Producto 100% artesanal</p>
-          <div class="producto-precio"><span class="precio">$150.00</span><small>Precio por botella</small></div>
-          <button type="button" class="btn-agregar">Agregar al pedido</button>
+          <p class="producto-tipo" data-i18n="prod.tipo">Vino tinto · Flor de Jamaica</p>
+          <p class="producto-detalle" data-i18n-html="prod.detalle">750 ml · 12% Alc. Vol.<br>Producto 100% artesanal</p>
+          <div class="producto-precio"><span class="precio">$150.00</span><small data-i18n="prod.porBotella">Precio por botella</small></div>
+          <button type="button" class="btn-agregar" data-i18n="prod.agregar">Agregar al pedido</button>
         </article>
       </div>
       <aside class="carrito" aria-labelledby="carritoTitulo">
-        <h3 id="carritoTitulo">Tu pedido</h3>
-        <p class="carrito-vacio" id="carritoVacio">Aún no has agregado botellas.</p>
+        <h3 id="carritoTitulo" data-i18n="carrito.h3">Tu pedido</h3>
+        <p class="carrito-vacio" id="carritoVacio" data-i18n="carrito.vacio">Aún no has agregado botellas.</p>
         <ul class="carrito-lista" id="carritoLista"></ul>
         <div class="carrito-totales">
-          <div><span>Subtotal</span><span id="carritoSubtotal">$0.00</span></div>
-          <div class="total"><span>Total</span><span id="carritoTotal">$0.00</span></div>
+          <div><span data-i18n="carrito.subtotal">Subtotal</span><span id="carritoSubtotal">$0.00</span></div>
+          <div class="total"><span data-i18n="carrito.total">Total</span><span id="carritoTotal">$0.00</span></div>
         </div>
-        <button type="button" class="btn-primary" id="carritoFinalizar" disabled>Enviar pedido por WhatsApp</button>
-        <button type="button" class="carrito-vaciar" id="carritoVaciar" hidden>Vaciar pedido</button>
+        <button type="button" class="btn-primary" id="carritoFinalizar" disabled data-i18n="carrito.enviar">Enviar pedido por WhatsApp</button>
+        <button type="button" class="carrito-vaciar" id="carritoVaciar" hidden data-i18n="carrito.vaciar">Vaciar pedido</button>
         <p class="carrito-estado" id="carritoEstado" role="status" aria-live="polite"></p>
-        <p class="carrito-nota">Se abrirá WhatsApp con tu pedido ya escrito para el +52 1 981 141 0557. No se cobra nada en esta página.</p>
+        <p class="carrito-nota" data-i18n="carrito.nota">Se abrirá WhatsApp con tu pedido ya escrito para el +52 1 981 141 0557. No se cobra nada en esta página.</p>
       </aside>
     </div>
-    <p class="tienda-aviso">Venta exclusiva a mayores de 18 años. Evita el exceso: tomar bebidas alcohólicas en exceso es dañino para la salud.</p>
+    <p class="tienda-aviso" data-i18n="aviso.venta">Venta exclusiva a mayores de 18 años. Evita el exceso: tomar bebidas alcohólicas en exceso es dañino para la salud.</p>
   </div>
 </section>
 
@@ -215,27 +230,27 @@
 <section class="section-burgundy" id="filosofia">
   <div class="wrap">
     <div class="kicker">
-      <div class="eyebrow">Filosofía</div>
-      <h2>Misión, visión y valores</h2>
+      <div class="eyebrow" data-i18n="nav.filosofia">Filosofía</div>
+      <h2 data-i18n="filo.h2">Misión, visión y valores</h2>
     </div>
     <div class="filo-grid">
       <div class="filo-card">
         <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="#ecd08f" stroke-width="1.4"><path d="M4 20V10l8-6 8 6v10H4z"/><path d="M9 20v-6h6v6"/></svg></div>
-        <h3>Misión</h3>
-        <p>Elaboración y comercialización de vinos tintos a base de Flor de Jamaica de alta calidad y disfrute. Contribuimos al desarrollo de la región y su gente.</p>
+        <h3 data-i18n="filo.mision">Misión</h3>
+        <p data-i18n="filo.mision.p">Elaboración y comercialización de vinos tintos a base de Flor de Jamaica de alta calidad y disfrute. Contribuimos al desarrollo de la región y su gente.</p>
       </div>
       <div class="filo-card">
         <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="#ecd08f" stroke-width="1.4"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
-        <h3>Visión</h3>
-        <p>Consolidar la marca para que sea capaz de competir globalmente y ser una empresa líder, brindando confianza y seguridad con productos de alta calidad para nuestros clientes en un mercado lleno de infinitas marcas.</p>
+        <h3 data-i18n="filo.vision">Visión</h3>
+        <p data-i18n="filo.vision.p">Consolidar la marca para que sea capaz de competir globalmente y ser una empresa líder, brindando confianza y seguridad con productos de alta calidad para nuestros clientes en un mercado lleno de infinitas marcas.</p>
       </div>
       <div class="filo-card filo-card-valores">
         <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="#ecd08f" stroke-width="1.4"><path d="M12 21c-5-3-9-6-9-11a5 5 0 019-3 5 5 0 019 3c0 5-4 8-9 11z"/></svg></div>
-        <h3>Valores</h3>
+        <h3 data-i18n="filo.valores">Valores</h3>
         <ul class="valores-list">
-          <li><b>Responsabilidad:</b> estamos comprometidos con nuestros clientes y su satisfacción.</li>
-          <li><b>Ética:</b> trabajamos apegados a la calidad y a brindar un producto totalmente campechano.</li>
-          <li><b>Equipo:</b> sabemos trabajar en equipo y cooperar para lograr objetivos comunes.</li>
+          <li data-i18n-html="filo.v1"><b>Responsabilidad:</b> estamos comprometidos con nuestros clientes y su satisfacción.</li>
+          <li data-i18n-html="filo.v2"><b>Ética:</b> trabajamos apegados a la calidad y a brindar un producto totalmente campechano.</li>
+          <li data-i18n-html="filo.v3"><b>Equipo:</b> sabemos trabajar en equipo y cooperar para lograr objetivos comunes.</li>
         </ul>
       </div>
     </div>
@@ -247,15 +262,15 @@
   <div class="wrap">
     <div class="fundador-grid">
       <div class="fundador-frame">
-        <img src="assets/fundador-wilbert-suarez.jpg" alt="Wilbert Ernesto Suárez Vázquez, fundador de Vinos Don Suárez">
+        <img src="assets/fundador-wilbert-suarez.jpg" alt="Wilbert Ernesto Suárez Vázquez, fundador de Vinos Don Suárez" data-i18n-attr="alt:fund.alt">
       </div>
       <div class="fundador-text">
-        <span class="fundador-role">El fundador</span>
+        <span class="fundador-role" data-i18n="fund.role">El fundador</span>
         <h3 class="italic">Wilbert Ernesto Suárez Vázquez</h3>
-        <p>Biólogo marino de formación, actualmente cursando la Maestría en Comercio Exterior y Negocios Internacionales. Director General y Fundador de Vinos Don Suárez, marca campechana dedicada a la elaboración de vinos artesanales a base de Flor de Jamaica, y también de Carassius, empresa productora y comercializadora de peces de ornato.</p>
-        <p>Es también Presidente del Colegio de Desarrollo Ambiental A.C. y del Comité de Sanidad e Inocuidad Acuícola del Estado de Campeche, y miembro activo de CANACINTRA, desde donde impulsa el desarrollo empresarial y la valorización de los recursos naturales de la región.</p>
+        <p data-i18n="fund.p1">Biólogo marino de formación, actualmente cursando la Maestría en Comercio Exterior y Negocios Internacionales. Director General y Fundador de Vinos Don Suárez, marca campechana dedicada a la elaboración de vinos artesanales a base de Flor de Jamaica, y también de Carassius, empresa productora y comercializadora de peces de ornato.</p>
+        <p data-i18n="fund.p2">Es también Presidente del Colegio de Desarrollo Ambiental A.C. y del Comité de Sanidad e Inocuidad Acuícola del Estado de Campeche, y miembro activo de CANACINTRA, desde donde impulsa el desarrollo empresarial y la valorización de los recursos naturales de la región.</p>
         <div class="badges">
-          <span>Biólogo Marino</span>
+          <span data-i18n="fund.b1">Biólogo Marino</span>
           <span>Carassius</span>
           <span>CANACINTRA</span>
           <span>Colegio de Desarrollo Ambiental</span>
@@ -269,46 +284,46 @@
 <section class="section-wood" id="comunidad">
   <div class="wrap">
     <div class="kicker">
-      <div class="eyebrow">Comunidad Don Suárez</div>
-      <h2 class="italic">Comparte tu momento Suárez</h2>
-      <p>Sube una foto brindando con Don Suárez. Revisamos cada imagen antes de publicarla en la galería.</p>
+      <div class="eyebrow" data-i18n="com.eyebrow">Comunidad Don Suárez</div>
+      <h2 class="italic" data-i18n="com.h2">Comparte tu momento Suárez</h2>
+      <p data-i18n="com.p">Sube una foto brindando con Don Suárez. Revisamos cada imagen antes de publicarla en la galería.</p>
     </div>
     <div class="comunidad-grid">
       <div class="form-card foto-form-card">
         <form id="fotoForm">
-          <label for="fotoNombre">Tu nombre</label>
-          <input id="fotoNombre" name="nombre" type="text" maxlength="60" required placeholder="Cómo quieres que aparezca">
-          <label for="fotoCiudad">Ciudad <span class="opcional">(opcional)</span></label>
-          <input id="fotoCiudad" name="ciudad" type="text" maxlength="60" placeholder="Campeche, Mérida...">
-          <label for="fotoMensaje">Mensaje <span class="opcional">(opcional)</span></label>
-          <textarea id="fotoMensaje" name="mensaje" rows="3" maxlength="240" placeholder="¿Con quién y en qué ocasión brindaste?"></textarea>
-          <label for="fotoArchivo">Tu foto</label>
+          <label for="fotoNombre" data-i18n="com.nombre">Tu nombre</label>
+          <input id="fotoNombre" name="nombre" type="text" maxlength="60" required placeholder="Cómo quieres que aparezca" data-i18n-attr="placeholder:com.ph.nombre">
+          <label for="fotoCiudad"><span data-i18n="com.ciudad">Ciudad</span> <span class="opcional" data-i18n="com.opcional">(opcional)</span></label>
+          <input id="fotoCiudad" name="ciudad" type="text" maxlength="60" placeholder="Campeche, Mérida..." data-i18n-attr="placeholder:com.ph.ciudad">
+          <label for="fotoMensaje"><span data-i18n="com.mensaje">Mensaje</span> <span class="opcional" data-i18n="com.opcional">(opcional)</span></label>
+          <textarea id="fotoMensaje" name="mensaje" rows="3" maxlength="240" placeholder="¿Con quién y en qué ocasión brindaste?" data-i18n-attr="placeholder:com.ph.mensaje"></textarea>
+          <label for="fotoArchivo" data-i18n="com.foto">Tu foto</label>
           <input id="fotoArchivo" name="foto" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" required>
-          <img id="fotoPreview" class="foto-preview" alt="Vista previa de tu foto" hidden>
+          <img id="fotoPreview" class="foto-preview" alt="Vista previa de tu foto" hidden data-i18n-attr="alt:com.preview.alt">
           <div class="hp" aria-hidden="true">
-            <label for="fotoWeb">No llenar este campo</label>
+            <label for="fotoWeb" data-i18n="com.hp">No llenar este campo</label>
             <input id="fotoWeb" name="web" type="text" tabindex="-1" autocomplete="off">
           </div>
           <label class="consent">
             <input id="fotoConsent" type="checkbox" required>
-            <span>Tengo 18 años o más y autorizo que Vinos Don Suárez publique mi foto y mi nombre en este sitio.</span>
+            <span data-i18n="com.consent">Tengo 18 años o más y autorizo que Vinos Don Suárez publique mi foto y mi nombre en este sitio.</span>
           </label>
-          <button type="submit" id="fotoEnviar" class="btn-primary">Enviar foto</button>
+          <button type="submit" id="fotoEnviar" class="btn-primary" data-i18n="com.enviar">Enviar foto</button>
           <div class="progreso" id="fotoProgreso" hidden><span></span></div>
           <p class="foto-estado" id="fotoEstado" role="status" aria-live="polite"></p>
         </form>
       </div>
       <div class="galeria-wrap">
         <div id="galeriaGrid" class="galeria-grid"></div>
-        <p id="galeriaVacia" class="galeria-vacia">Cargando fotos…</p>
+        <p id="galeriaVacia" class="galeria-vacia" data-i18n="gal.cargando">Cargando fotos…</p>
       </div>
     </div>
-    <p class="aviso-alcohol">Contenido para mayores de 18 años. Evita el exceso: tomar bebidas alcohólicas en exceso es dañino para la salud.</p>
+    <p class="aviso-alcohol" data-i18n="aviso.comunidad">Contenido para mayores de 18 años. Evita el exceso: tomar bebidas alcohólicas en exceso es dañino para la salud.</p>
   </div>
 </section>
 
-<dialog id="lightbox" class="lightbox" aria-label="Foto ampliada">
-  <button type="button" class="lb-cerrar" id="lbCerrar" aria-label="Cerrar">✕</button>
+<dialog id="lightbox" class="lightbox" aria-label="Foto ampliada" data-i18n-attr="aria-label:lb.aria">
+  <button type="button" class="lb-cerrar" id="lbCerrar" aria-label="Cerrar" data-i18n-attr="aria-label:lb.cerrar">✕</button>
   <img id="lbImg" alt="">
   <p id="lbCap"></p>
 </dialog>
@@ -318,41 +333,41 @@
   <div class="wrap">
     <div class="contact-grid">
       <div>
-        <div class="eyebrow">Contacto</div>
-        <h2 class="italic">Hablemos de vino</h2>
-        <p>¿Quieres realizar un pedido, distribuir Don Suárez o simplemente saber más? Escríbenos, con gusto te atendemos.</p>
+        <div class="eyebrow" data-i18n="nav.contacto">Contacto</div>
+        <h2 class="italic" data-i18n="cont.h2">Hablemos de vino</h2>
+        <p data-i18n="cont.p">¿Quieres realizar un pedido, distribuir Don Suárez o simplemente saber más? Escríbenos, con gusto te atendemos.</p>
         <ul class="contact-list">
-          <li><span class="lbl">WhatsApp para pedidos</span><a href="https://wa.me/5219811410557" target="_blank" rel="noopener">+52 1 981 141 0557</a></li>
-          <li><span class="lbl">Correo</span><a href="https://mail.google.com/mail/?view=cm&fs=1&to=vinosdonsuarez%40gmail.com" target="_blank" rel="noopener">vinosdonsuarez@gmail.com</a></li>
-          <li><span class="lbl">Ubicación</span><span>Campeche, Campeche, México</span></li>
+          <li><span class="lbl" data-i18n="cont.wa">WhatsApp para pedidos</span><a href="https://wa.me/5219811410557" target="_blank" rel="noopener">+52 1 981 141 0557</a></li>
+          <li><span class="lbl" data-i18n="cont.correo">Correo</span><a href="https://mail.google.com/mail/?view=cm&fs=1&to=vinosdonsuarez%40gmail.com" target="_blank" rel="noopener">vinosdonsuarez@gmail.com</a></li>
+          <li><span class="lbl" data-i18n="cont.ubicacion">Ubicación</span><span data-i18n="cont.ubicacionV">Campeche, Campeche, México</span></li>
         </ul>
-        <p class="social-title">Síguenos y escríbenos</p>
+        <p class="social-title" data-i18n="cont.social">Síguenos y escríbenos</p>
         <div class="social-row">
-          <a href="https://www.facebook.com/VinoDonSuarez/" target="_blank" rel="noopener" aria-label="Facebook de Vinos Don Suárez" class="social-btn">
+          <a href="https://www.facebook.com/VinoDonSuarez/" target="_blank" rel="noopener" aria-label="Facebook de Vinos Don Suárez" class="social-btn" data-i18n-attr="aria-label:cont.fb.aria">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 8.5h-2c-.8 0-1.5.7-1.5 1.5v2h3.3l-.4 3H11.5v7h-3v-7H6.5v-3h2V9.6C8.5 7.1 10 5.5 12.3 5.5H15v3z"/></svg><span>Facebook</span>
           </a>
-          <a href="https://api.whatsapp.com/send?phone=%2B529811410557" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp" class="social-btn">
+          <a href="https://api.whatsapp.com/send?phone=%2B529811410557" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp" class="social-btn" data-i18n-attr="aria-label:cont.wa.aria">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20l1.3-4A8 8 0 1112 20a8 8 0 01-4-1.1L4 20z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5.6 0 1-.6.8-1.1l-.5-1.2c-.1-.4-.6-.6-1-.4l-.7.3a4.2 4.2 0 01-2.2-2.2l.3-.7c.2-.4 0-.9-.4-1L9.6 8.7c-.5-.2-1.1.2-1.1.8z"/></svg><span>WhatsApp</span>
           </a>
         </div>
       </div>
       <div class="form-card">
         <form id="contactoForm" action="#" method="get">
-          <label for="nombre">Nombre</label>
-          <input id="nombre" name="nombre" type="text" required placeholder="Tu nombre">
-          <label for="correo">Correo</label>
+          <label for="nombre" data-i18n="ficha.nombre">Nombre</label>
+          <input id="nombre" name="nombre" type="text" required placeholder="Tu nombre" data-i18n-attr="placeholder:cont.ph.nombre">
+          <label for="correo" data-i18n="cont.correo">Correo</label>
           <input id="correo" name="correo" type="email" required placeholder="tu@correo.com">
-          <label for="mensaje">Mensaje</label>
-          <textarea id="mensaje" name="mensaje" rows="4" required placeholder="Cuéntanos qué necesitas..."></textarea>
-          <button type="submit" class="btn-primary">Enviar mensaje</button>
+          <label for="mensaje" data-i18n="com.mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="4" required placeholder="Cuéntanos qué necesitas..." data-i18n-attr="placeholder:cont.ph.mensaje"></textarea>
+          <button type="submit" class="btn-primary" data-i18n="cont.enviar">Enviar mensaje</button>
         </form>
-        <p class="form-note">Al enviar, se abrirá Gmail con el mensaje listo para mandar a vinosdonsuarez@gmail.com</p>
+        <p class="form-note" data-i18n="cont.nota">Al enviar, se abrirá Gmail con el mensaje listo para mandar a vinosdonsuarez@gmail.com</p>
       </div>
     </div>
     <div class="foot-bottom">
       <span class="brand"><img class="brand-logo" src="assets/logo-nav.png" width="40" height="40" alt=""> Don Suárez</span>
-      <span>Fundada en 2017 · Campeche, México</span>
-      <span>© 2026 Vinos Don Suárez. Todos los derechos reservados.</span>
+      <span data-i18n="foot.fundada">Fundada en 2017 · Campeche, México</span>
+      <span data-i18n="foot.derechos">© 2026 Vinos Don Suárez. Todos los derechos reservados.</span>
     </div>
   </div>
 </footer>

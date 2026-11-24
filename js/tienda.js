@@ -3,7 +3,8 @@
   - El carrito vive en la página; al finalizar se abre WhatsApp (+52 1 981 141 0557)
     con el pedido redactado. No hay pagos ni se guarda ningún dato.
   - Los precios están en index.html (atributo data-precio de cada tarjeta).
-    SON PRECIOS DE EJEMPLO: hay que cambiarlos por los reales.
+  - Los textos cambian según el idioma elegido (js/i18n.js). El mensaje del pedido
+    SIEMPRE sale en español, porque quien lo recibe en WhatsApp lee español.
 */
 (function () {
   'use strict';
@@ -20,7 +21,16 @@
   var estado = document.getElementById('carritoEstado');
 
   var MAX_POR_PRODUCTO = 12;
-  var dinero = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' });
+  var I18N = window.DS_I18N;
+  function tr(clave, vars) { return I18N ? I18N.t(clave, vars) : clave; }
+  var dineroEs = new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' });
+  var dinero = dineroEs;
+  function actualizarMoneda() {
+    var loc = I18N ? I18N.locale() : 'es-MX';
+    try { dinero = new Intl.NumberFormat(loc, { style: 'currency', currency: 'MXN' }); }
+    catch (e) { dinero = dineroEs; }
+  }
+  actualizarMoneda();
 
   var productos = {};   // id -> { id, nombre, precio }
   var orden = [];       // ids en el orden en que aparecen en la página
@@ -36,19 +46,16 @@
     productos[p.id] = p;
     orden.push(p.id);
 
-    var precioEl = tarjeta.querySelector('.precio');
-    if (precioEl) precioEl.textContent = dinero.format(p.precio);
+    p.precioEl = tarjeta.querySelector('.precio');
 
     var boton = tarjeta.querySelector('.btn-agregar');
     if (boton) {
       boton.addEventListener('click', function () {
         agregar(p.id);
-        var original = boton.getAttribute('data-texto') || boton.textContent;
-        boton.setAttribute('data-texto', original);
-        boton.textContent = 'Agregado ✓';
+        boton.textContent = tr('tienda.agregado');
         boton.classList.add('agregado');
         window.setTimeout(function () {
-          boton.textContent = original;
+          boton.textContent = tr('prod.agregar');
           boton.classList.remove('agregado');
         }, 1200);
       });
@@ -62,17 +69,17 @@
   function agregar(id) {
     var actual = carrito[id] || 0;
     if (actual >= MAX_POR_PRODUCTO) {
-      anunciar('Máximo ' + MAX_POR_PRODUCTO + ' botellas por producto en esta demostración.');
+      anunciar(tr('tienda.max', { n: MAX_POR_PRODUCTO }));
       return;
     }
     carrito[id] = actual + 1;
-    anunciar(productos[id].nombre + ' agregado al pedido.');
+    anunciar(tr('tienda.agregadoMsg', { p: productos[id].nombre }));
     pintar();
   }
 
   function cambiar(id, delta) {
     var nueva = (carrito[id] || 0) + delta;
-    if (nueva <= 0) { delete carrito[id]; anunciar(productos[id].nombre + ' quitado del pedido.'); }
+    if (nueva <= 0) { delete carrito[id]; anunciar(tr('tienda.quitadoMsg', { p: productos[id].nombre })); }
     else if (nueva > MAX_POR_PRODUCTO) { return; }
     else { carrito[id] = nueva; anunciar(''); }
     pintar();
@@ -80,13 +87,13 @@
 
   function quitar(id) {
     delete carrito[id];
-    anunciar(productos[id].nombre + ' quitado del pedido.');
+    anunciar(tr('tienda.quitadoMsg', { p: productos[id].nombre }));
     pintar();
   }
 
   function vaciar() {
     carrito = {};
-    anunciar('Pedido vacío.');
+    anunciar(tr('tienda.vacioMsg'));
     pintar();
   }
 
@@ -131,13 +138,13 @@
 
       var ctrl = document.createElement('div');
       ctrl.className = 'item-controles';
-      var menos = boton('−', 'qty-btn', 'Quitar una botella de ' + p.nombre, function () { cambiar(id, -1); });
+      var menos = boton('−', 'qty-btn', tr('tienda.menosAria', { p: p.nombre }), function () { cambiar(id, -1); });
       var qty = document.createElement('span');
       qty.className = 'item-qty';
       qty.textContent = String(cantidad);
-      var mas = boton('+', 'qty-btn', 'Agregar una botella de ' + p.nombre, function () { cambiar(id, 1); });
+      var mas = boton('+', 'qty-btn', tr('tienda.masAria', { p: p.nombre }), function () { cambiar(id, 1); });
       mas.disabled = cantidad >= MAX_POR_PRODUCTO;
-      var quitarBtn = boton('Quitar', 'item-quitar', 'Quitar ' + p.nombre + ' del pedido', function () { quitar(id); });
+      var quitarBtn = boton(tr('tienda.quitar'), 'item-quitar', tr('tienda.quitarAria', { p: p.nombre }), function () { quitar(id); });
       ctrl.appendChild(menos);
       ctrl.appendChild(qty);
       ctrl.appendChild(mas);
@@ -146,6 +153,10 @@
       li.appendChild(top);
       li.appendChild(ctrl);
       lista.appendChild(li);
+    });
+
+    orden.forEach(function (id) {
+      if (productos[id].precioEl) productos[id].precioEl.textContent = dinero.format(productos[id].precio);
     });
 
     var suma = total();
@@ -163,13 +174,23 @@
     orden.forEach(function (id) {
       var cantidad = carrito[id];
       if (!cantidad) return;
-      lineas.push('• ' + cantidad + ' × ' + productos[id].nombre + ' — ' + dinero.format(cantidad * productos[id].precio));
+      lineas.push('• ' + cantidad + ' × ' + productos[id].nombre + ' — ' + dineroEs.format(cantidad * productos[id].precio));
     });
-    lineas.push('Total: ' + dinero.format(total()));
+    lineas.push('Total: ' + dineroEs.format(total()));
+    if (I18N && I18N.lang() !== 'es') lineas.push('Idioma del cliente / Customer language: ' + I18N.nombre());
     var url = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(lineas.join('\n'));
     window.open(url, '_blank', 'noopener');
   });
   btnVaciar.addEventListener('click', vaciar);
+
+  // Al cambiar de idioma se vuelve a pintar el pedido (textos y formato de dinero)
+  if (I18N) {
+    I18N.onChange(function () {
+      actualizarMoneda();
+      estado.textContent = '';
+      pintar();
+    });
+  }
 
   pintar();
 })();
